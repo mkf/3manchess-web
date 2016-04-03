@@ -45,3 +45,7 @@ function fig(figtype,color,pawncenter) {
 		return (this.figtype==0);
 	}
 }
+
+function uint8tofig(uint8) {
+	return fig(uint8 & 7, (uint8>>3) & 7, (i>>7)>0);
+}
