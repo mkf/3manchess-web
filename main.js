@@ -168,4 +168,24 @@ function client(baseURL) {
 		}
 		xhr.send();
 	}
+	this.botkey = function (botid, userid, userauth) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/botkey";
+		xhr.open("POST",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		var data = JSON.stringify({"botid":botid,"userauth":{"id":userid,"authkey":userauth}});
+		xhr.send(data);
+	}
 }
