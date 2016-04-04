@@ -16,10 +16,10 @@ function fig(figtype,color,pawncenter) {
 	this.pawncenter=pawncenter;
 	this.uint8 = function() {
 		return (this.pawncenter << 6) | (this.color << 3) | this.figtype;
-	}
+	};
 	this.empty = function() {
 		return (this.figtype==0);
-	}
+	};
 }
 
 function uint8tofig(uint8) {
@@ -29,6 +29,7 @@ function uint8tofig(uint8) {
 function boardfromuint8(sourceboard) {
 	var source = sourceboard;
 	for (var y=1;y<6;y++) {
+		for (var x=1;x<24;x++) {
 			var t = source[y][x];
 			source[y][x]=uint8tofig(t);
 		}
@@ -59,7 +60,7 @@ function state(obj) {
 	this.prepareforsending = function() {
 		var temp = this.board;
 		this.board = boardtouint8(temp);
-	}
+	};
 }
 
 function gameplay(client, gameid) {
@@ -71,12 +72,12 @@ function gameplay(client, gameid) {
 }
 
 function askpromotion(what, topos) {
-	return (what==Pawn && topos[0]==0)
+	return (what==Pawn && topos[0]==0);
 }
 
 function client(baseURL) {
 	this.baseURL=String(baseURL);
-	this.addGame = func(state,white,gray,black) {
+	this.addGame = function(state,white,gray,black) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/addgame";
 		xhr.open("POST",url,true);
@@ -93,13 +94,13 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		state.prepareforsending();
 		var data = JSON.stringify({"state":state,"whiteplayer":white,"grayplayer":gray,"blackplayer":black});
 		xhr.send(data);
-	}
+	};
 	this.after = function (gameid, white, gray, black) {
-		func queraft(white, gray, black) {
+		function queraft(white, gray, black) {
 			if (white!=null || gray!=null || black!=null) {
 				var o = "?";
 				if (white!=null) {
@@ -120,7 +121,7 @@ function client(baseURL) {
 				return o;
 			}
 			return "";
-		}
+		};
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/play/"+gameid+"/after"+queraft(white,gray,black);
 		xhr.open("GET",url,true);
@@ -137,9 +138,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.before = function (gameid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/play/"+gameid+"/after";
@@ -157,9 +158,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.botinfo = function (botid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/bot/"+botid;
@@ -177,9 +178,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.userinfo = function (userid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/user/"+userid;
@@ -197,9 +198,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.whoisit = function (playerid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/player/"+playerid;
@@ -217,9 +218,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.botkey = function (botid, userid, userauth) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/botkey";
@@ -237,10 +238,10 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		var data = JSON.stringify({"botid":botid,"userauth":{"id":userid,"authkey":userauth}});
 		xhr.send(data);
-	}
+	};
 	this.login = function (login, passwd) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/login";
@@ -258,10 +259,10 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		var data = JSON.stringify({"login":login,"passwd":passwd});
 		xhr.send(data);
-	}
+	};
 	this.move = function (moveid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/move/"+moveid;
@@ -279,9 +280,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.play = function (gameid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/play/"+gameid;
@@ -299,9 +300,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.state = function (stateid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/state/"+stateid;
@@ -311,7 +312,7 @@ function client(baseURL) {
 			if (xhr.readyState==4) {
 				if (xhr.status==200) {
 					var give = JSON.parse(xhr.responseText);
-					var st = new state(give)
+					var st = new state(give);
 					console.log(st);
 					return st;
 				} else if (xhr.status>=400) {
@@ -320,9 +321,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.vftpgen = function (stateid) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/state/"+stateid+"/vftpgen";
@@ -340,9 +341,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.newbot = function (whoami, owner, userauth, ownname, settings) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/newbot";
@@ -360,10 +361,10 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		var data = JSON.stringify({"whoami":btoa(whoami),"owner":{"id":owner,"authkey":userauth},"ownname":ownname,"settings":btoa(settings)});
 		xhr.send(data);
-	}
+	};
 	this.ownersbots = function (owner) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/user/"+owner+"/bots";
@@ -381,9 +382,9 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		xhr.send();
-	}
+	};
 	this.signup = function (login, passwd, name) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/signup";
@@ -401,10 +402,10 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		var data = JSON.stringify({"login":login,"passwd":passwd,"name":name});
 		xhr.send(data);
-	}
+	};
 	this.turn = function (gameid, fromtoprom, playerid, authkey) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/play/"+gameid;
@@ -422,8 +423,8 @@ function client(baseURL) {
 					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
-		}
+		};
 		var data = JSON.stringify({"fromtoprom":fromtoprom,"whoplayer":{"id":playerid,"authkey":authkey}});
 		xhr.send(data);
-	}
-}
+	};
+};
