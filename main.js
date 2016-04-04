@@ -70,6 +70,10 @@ function gameplay(client, gameid) {
 	this.vftpg = client.vftpgen(this.play.stateid);
 }
 
+function askpromotion(what, topos) {
+	return (what==Pawn && topos[0]==0)
+}
+
 function client(baseURL) {
 	this.baseURL=String(baseURL);
 	this.addGame = func(state,white,gray,black) {
