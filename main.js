@@ -82,6 +82,7 @@ function client(baseURL) {
 				} else if (xhr.status==422) {
 					var err = JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -125,6 +126,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -144,6 +146,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -163,6 +166,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -182,6 +186,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -201,6 +206,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -220,6 +226,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -240,6 +247,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -260,6 +268,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -279,6 +288,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -298,6 +308,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -317,6 +328,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -336,6 +348,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -356,6 +369,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -375,6 +389,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
@@ -395,6 +410,7 @@ function client(baseURL) {
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
+					throw {"statuscode":xhr.status,"error":err};
 				}
 			}
 		}
