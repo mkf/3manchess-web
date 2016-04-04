@@ -168,6 +168,44 @@ function client(baseURL) {
 		}
 		xhr.send();
 	}
+	this.userinfo = function (userid) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/user/"+userid;
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
+	this.whoisit = function (playerid) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/player/"+playerid;
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
 	this.botkey = function (botid, userid, userauth) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/botkey";
