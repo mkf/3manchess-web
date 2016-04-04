@@ -70,3 +70,22 @@ function boardtouint8(sourceboard) {
 	}
 	return source;
 }
+
+function state(uint8board, moatsstate, movesnext, castling, enpassant, halfmoveclock, fullmovenumber, alivecolors) {
+	this.board = boardfromuint8(board);
+	this.moatsstate = moatsstate;
+	this.movesnext = movesnext;
+	this.castling = castling;
+	this.enpassant = enpassant;
+	this.halfmoveclock = halfmoveclock;
+	this.fullmovenumber = fullmovenumber;
+	this.alivecolors = alivecolors;
+	this.prepareforsending = function() {
+		var temp = this.board;
+		this.board = boardtouint8(temp);
+	}
+}
+
+function statejson(obj) {
+	return state(obj.board, obj.moatsstate, obj.movesnext, obj.castling, obj.enpassant, obj.halfmoveclock, obj.fullmovenumber, obj.alivecolors);
+}
