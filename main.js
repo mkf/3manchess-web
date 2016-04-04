@@ -89,4 +89,45 @@ function client(baseURL) {
 		var data = JSON.stringify({"state":state,"whiteplayer":white,"grayplayer":gray,"blackplayer":black});
 		xhr.send(data);
 	}
+	this.after = function (gameid, white, gray, black) {
+		func queraft(white, gray, black) {
+			if (white!=null || gray!=null || black!=null) {
+				var o = "?";
+				if (white!=null) {
+					o+="white="+white;
+					if (gray!=null || black!=null) {
+						o+="&";
+					}
+				}
+				if (gray!=null) {
+					o+="gray="+gray;
+					if (black!=null) {
+						o+="&";
+					}
+				}
+				if (black!=null) {
+					o+="black="+black;
+				}
+				return o;
+			}
+			return "";
+		}
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/play/"+gameid+"/after";
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange = function() {
+			if (hxr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=399) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
 }
