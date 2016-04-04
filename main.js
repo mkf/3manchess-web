@@ -265,6 +265,25 @@ function client(baseURL) {
 		}
 		xhr.send();
 	}
+	this.vftpgen = function (stateid) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/state/"+stateid+"/vftpgen";
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type","application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
 	this.newbot = function (whoami, owner, userauth, ownname, settings) {
 		xhr = new XMLHttpRequest();
 		var url=this.baseURL+"api/newbot";
