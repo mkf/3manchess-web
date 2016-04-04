@@ -304,4 +304,24 @@ function client(baseURL) {
 		}
 		xhr.send();
 	}
+	this.signup = function (login, passwd, name) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/signup";
+		xhr.open("POST",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		var data = JSON.stringify({"login":login,"passwd":passwd,"name":name});
+		xhr.send(data);
+	}
 }
