@@ -1,28 +1,3 @@
-function client(baseURL) {
-	this.baseURL=String(baseURL);
-	this.addGame = func(state,white,gray,black) {
-		xhr = new XMLHttpRequest();
-		var url=this.baseURL+"api/addgame";
-		xhr.open("POST",url,true);
-		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-		xhr.onreadystatechange = function() {
-			if (xhr.readyState==4) {
-				if (xhr.status==200) {
-					var give = JSON.parse(xhr.responseText);
-					console.log(give);
-					return give;
-				} else if (xhr.status==422) {
-					var err = JSON.parse(xhr.responseText);
-					console.log(err);
-				}
-			}
-		}
-		state.prepareforsending();
-		var data = JSON.stringify({"state":state,"whiteplayer":white,"grayplayer":gray,"blackplayer":black});
-		xhr.send(data);
-	}
-}
-
 const ZeroFigType = 0;
 const Rook = 1;
 const Knight = 2;
@@ -89,4 +64,29 @@ function state(uint8board, moatsstate, movesnext, castling, enpassant, halfmovec
 
 function statejson(obj) {
 	return state(obj.board, obj.moatsstate, obj.movesnext, obj.castling, obj.enpassant, obj.halfmoveclock, obj.fullmovenumber, obj.alivecolors);
+}
+
+function client(baseURL) {
+	this.baseURL=String(baseURL);
+	this.addGame = func(state,white,gray,black) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/addgame";
+		xhr.open("POST",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status==422) {
+					var err = JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		state.prepareforsending();
+		var data = JSON.stringify({"state":state,"whiteplayer":white,"grayplayer":gray,"blackplayer":black});
+		xhr.send(data);
+	}
 }
