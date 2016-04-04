@@ -49,3 +49,24 @@ function fig(figtype,color,pawncenter) {
 function uint8tofig(uint8) {
 	return fig(uint8 & 7, (uint8>>3) & 7, (i>>7)>0);
 }
+
+function boardfromuint8(sourceboard) {
+	var source = sourceboard;
+	for (var y=1;y<6;y++) {
+			var t = source[y][x];
+			source[y][x]=uint8tofig(t);
+		}
+	}
+	return source;
+}
+
+function boardtouint8(sourceboard) {
+	var source = sourceboard;
+	for (var y=1;y<6;y++) {
+		for (var x=1;x<24;x++) {
+			var t = source[y][x];
+			source[y][x]=t.uint8();
+		}
+	}
+	return source;
+}
