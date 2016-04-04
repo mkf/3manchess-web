@@ -122,7 +122,7 @@ function client(baseURL) {
 					var give = JSON.parse(xhr.responseText);
 					console.log(give);
 					return give;
-				} else if (xhr.status>=399) {
+				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
 				}
@@ -141,7 +141,26 @@ function client(baseURL) {
 					var give = JSON.parse(xhr.responseText);
 					console.log(give);
 					return give;
-				} else if (xhr.status>=399 {
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
+	this.botinfo = function (botid) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/bot/"+botid;
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
 				}
