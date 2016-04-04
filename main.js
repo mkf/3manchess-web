@@ -62,6 +62,14 @@ function state(obj) {
 	}
 }
 
+function gameplay(client, gameid) {
+	this.client = client;
+	this.gameid = gameid;
+	this.play = client.play(gameid);
+	this.state = client.state(this.play.stateid);
+	this.vftpg = client.vftpgen(this.play.stateid);
+}
+
 function client(baseURL) {
 	this.baseURL=String(baseURL);
 	this.addGame = func(state,white,gray,black) {
