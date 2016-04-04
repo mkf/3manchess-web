@@ -17,6 +17,7 @@ function client(baseURL) {
 				}
 			}
 		}
+		state.prepareforsending();
 		var data = JSON.stringify({"state":state,"whiteplayer":white,"grayplayer":gray,"blackplayer":black});
 		xhr.send(data);
 	}
