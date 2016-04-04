@@ -285,4 +285,23 @@ function client(baseURL) {
 		var data = JSON.stringify({"whoami":btoa(whoami),"owner":{"id":owner,"authkey":userauth},"ownname":ownname,"settings":btoa(settings)});
 		xhr.send(data);
 	}
+	this.ownersbots = function (owner) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/user/"+owner+"/bots";
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+		xhr.onreadystatechange=function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=400) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
 }
