@@ -113,16 +113,35 @@ function client(baseURL) {
 			return "";
 		}
 		xhr = new XMLHttpRequest();
-		var url=this.baseURL+"api/play/"+gameid+"/after";
+		var url=this.baseURL+"api/play/"+gameid+"/after"+queraft(white,gray,black);
 		xhr.open("GET",url,true);
 		xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
 		xhr.onreadystatechange = function() {
-			if (hxr.readyState==4) {
+			if (xhr.readyState==4) {
 				if (xhr.status==200) {
 					var give = JSON.parse(xhr.responseText);
 					console.log(give);
 					return give;
 				} else if (xhr.status>=399) {
+					var err=JSON.parse(xhr.responseText);
+					console.log(err);
+				}
+			}
+		}
+		xhr.send();
+	}
+	this.before = function (gameid) {
+		xhr = new XMLHttpRequest();
+		var url=this.baseURL+"api/play/"+gameid+"/after";
+		xhr.open("GET",url,true);
+		xhr.setRequestHeader("Content-Type","application/json; charset=UTF-8");
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState==4) {
+				if (xhr.status==200) {
+					var give = JSON.parse(xhr.responseText);
+					console.log(give);
+					return give;
+				} else if (xhr.status>=399 {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
 				}
