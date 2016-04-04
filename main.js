@@ -47,7 +47,7 @@ function boardtouint8(sourceboard) {
 	return source;
 }
 
-function state(obj, client) {
+function state(obj) {
 	this.board = boardfromuint8(obj.board);
 	this.moatsstate = obj.moatsstate;
 	this.movesnext = obj.movesnext;
@@ -299,7 +299,7 @@ function client(baseURL) {
 			if (xhr.readyState==4) {
 				if (xhr.status==200) {
 					var give = JSON.parse(xhr.responseText);
-					var st = new state(give,this)
+					var st = new state(give)
 					console.log(st);
 					return st;
 				} else if (xhr.status>=400) {
