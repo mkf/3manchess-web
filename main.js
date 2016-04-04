@@ -47,23 +47,19 @@ function boardtouint8(sourceboard) {
 	return source;
 }
 
-function state(uint8board, moatsstate, movesnext, castling, enpassant, halfmoveclock, fullmovenumber, alivecolors) {
-	this.board = boardfromuint8(board);
-	this.moatsstate = moatsstate;
-	this.movesnext = movesnext;
-	this.castling = castling;
-	this.enpassant = enpassant;
-	this.halfmoveclock = halfmoveclock;
-	this.fullmovenumber = fullmovenumber;
-	this.alivecolors = alivecolors;
+function state(obj, client) {
+	this.board = boardfromuint8(obj.board);
+	this.moatsstate = obj.moatsstate;
+	this.movesnext = obj.movesnext;
+	this.castling = obj.castling;
+	this.enpassant = obj.enpassant;
+	this.halfmoveclock = obj.halfmoveclock;
+	this.fullmovenumber = obj.fullmovenumber;
+	this.alivecolors = obj.alivecolors;
 	this.prepareforsending = function() {
 		var temp = this.board;
 		this.board = boardtouint8(temp);
 	}
-}
-
-function statejson(obj) {
-	return state(obj.board, obj.moatsstate, obj.movesnext, obj.castling, obj.enpassant, obj.halfmoveclock, obj.fullmovenumber, obj.alivecolors);
 }
 
 function client(baseURL) {
@@ -303,8 +299,9 @@ function client(baseURL) {
 			if (xhr.readyState==4) {
 				if (xhr.status==200) {
 					var give = JSON.parse(xhr.responseText);
-					console.log(give);
-					return give;
+					var st = new state(give,this)
+					console.log(st);
+					return st;
 				} else if (xhr.status>=400) {
 					var err=JSON.parse(xhr.responseText);
 					console.log(err);
