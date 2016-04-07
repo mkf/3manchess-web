@@ -78,7 +78,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.botinfo = function (botid, callback, callbackParameters) {
+    this.botInfo = function (botid, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/bot/" + botid,
             type: "GET",
@@ -95,7 +95,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.userinfo = function (userid, callback, callbackParameters) {
+    this.userInfo = function (userid, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/user/" + userid,
             type: "GET",
@@ -112,7 +112,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.whoisit = function (playerid, callback, callbackParameters) {
+    this.whoIsIt = function (playerid, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/player/" + playerid,
             type: "GET",
@@ -129,7 +129,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.botkey = function (botid, userid, userauth, callback, callbackParameters) {
+    this.botKey = function (botid, userid, userauth, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/botkey",
             type: "POST",
@@ -233,7 +233,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.newbot = function (whoami, owner, userauth, ownname, settings, callback, callbackParameters) {
+    this.newBot = function (whoami, owner, userauth, ownname, settings, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/newbot",
             type: "POST",
@@ -256,7 +256,7 @@ var Client = function (baseUrl) {
         });
     };
 
-    this.ownersbots = function (owner, callback, callbackParameters) {
+    this.ownersBots = function (owner, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/user/" + owner + "/bots",
             type: "GET",
