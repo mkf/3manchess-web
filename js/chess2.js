@@ -80,6 +80,9 @@ function initPawns(){
 		document.getElementById("row").innerHTML = boardpos[0];
 	});
 	drawFields();
+	pionek(1,1,"p1",pozycjasrodka([0,0]));
+	pionek(3,3,"p2",pozycjasrodka([4,10]));
+	pionek(2,2,"p3",pozycjasrodka([5,20]));
 }
 
 function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
@@ -125,7 +128,8 @@ function drawField(a, b){  	//drawField(file, rank)
 				$('#pawns').setLayer(pionekClikedName,{
 					width: pionek_width,
 					height: pionek_height
-				})
+				});
+				animujPionek(pozycjasrodka([b,25-a]));
 			}
 		}
 	});
@@ -237,12 +241,12 @@ function przykladowePodswietlenie(){
 }
 
 /*** PIONKI ***/
-function pionek(color, figtype, nazwa){
+function pionek(color, figtype, nazwa, poz){
 	$('#pawns').drawImage({
 		layer: true,
 		name: nazwa,
 		source: pionekurl(color, figtype),
-		x: 0, y: 0,
+		x: poz[0], y: poz[1],
 		width: pionek_width,
 		height: pionek_height,
 		click: function(layer){
@@ -261,6 +265,13 @@ function pionek(color, figtype, nazwa){
 			pionekClikedName = layer.name;
 		}
 	});
+}
+
+function animujPionek(poz){
+	$('#pawns')
+	.animateLayer(pionekClikedName, {
+	  x: poz[0], y: poz[1]
+	}, 1000);
 }
 
 function przesunPionek(x, y, nazwa){
