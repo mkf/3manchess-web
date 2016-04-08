@@ -25,6 +25,14 @@ var pawns_radius; 	//promień szachownicy wraz z brzegiem
 var color_rotation; 	//color który jest na dole zwrócony w stronę usera
 //	potrzebny jest przycisk który będzie zmieniał tą zmienną na wybrany kolor i triggerował przerysowanie planszy
 
+var pionekIsCliked = false; //czy pionek został klinięty
+var pionekClikedName; //nazwa pionka podświetlonego
+
+var pionek_width = 60; //wymiary pionkow
+var pionek_height = 60;
+var pionek_width_light = 70;
+var pionek_height_light = 70;
+
 /******************************/
 
 Number.prototype.mod = function(n) {
@@ -110,6 +118,15 @@ function drawField(a, b){  	//drawField(file, rank)
 			ccw: true,
 			start: ang_stop, end: ang_start,
 			radius: r_2
+		},
+		click: function(layer){
+			if(pionekIsCliked){
+				pionekIsCliked = false;
+				$('#pawns').setLayer(pionekClikedName,{
+					width: pionek_width,
+					height: pionek_height
+				})
+			}
 		}
 	});
 }
@@ -219,7 +236,24 @@ function pionek(color, figtype, nazwa){
 		layer: true,
 		name: nazwa,
 		source: pionekurl(color, figtype),
-		x: 0, y: 0
+		x: 0, y: 0,
+		width: pionek_width,
+		height: pionek_height,
+		click: function(layer){
+			if(pionekIsCliked){
+				$(this).setLayer(pionekClikedName,{
+					width: pionek_width,
+					height: pionek_height
+				})
+			}
+			$(this).setLayer(layer, {
+				width: pionek_width_light,
+				height: pionek_height_light
+			})
+			.drawLayers();
+			pionekIsCliked = true;
+			pionekClikedName = layer.name;
+		}
 	});
 }
 
