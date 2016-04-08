@@ -130,7 +130,7 @@ function drawField(a, b){  	//drawField(file, rank)
 					width: pionek_width,
 					height: pionek_height
 				});
-				animujPionek(pozycjasrodka([a,25-b]));
+				animujPionek(pozycjasrodka([a,b]));
 			}
 		}
 	});
