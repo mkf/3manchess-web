@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>3manchess</title>
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+  <script type="text/javascript" src="js/jcanvas.js"></script>
+  <script type="text/javascript" src="js/chess2.js"></script>
     <script type="text/javascript" src="js/tools.js"></script>
     <script type="text/javascript" src="js/client.js"></script>
     <script type="text/javascript" src="js/figure.js"></script>
     <script type="text/javascript" src="js/gameplay.js"></script>
     <script type="text/javascript" src="js/state.js"></script>
     <script type="text/javascript" src="js/tools.js"></script>
-</head>
-<body>
-
-</body>
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-        var client = new Client("http://platinum.edu.pl:8082/");
-
-    });
-</script>
+ </head>
+ <body>
+   <canvas id="board" width="640" height="640"></canvas>
+   <canvas id="pawns" width="640" height="640"></canvas>
+   <div>Kolumna: <div id="col" class="lab">X</div></div>
+   <div>Pierścień: <div id="row" class="lab">X</div></div>
+ </body>
 </html>
