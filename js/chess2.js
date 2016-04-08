@@ -16,12 +16,8 @@ const color_field_1_light = "#003300"; //kolor podświetlonego ciemnego pola
 const color_field_2_light = "#009900"; //kolor podświetlonego jasnego pola
 /******************************/
 
-var board_radius; 	// obsolete?
 var board_radius_rim; 	// promień bez brzegu
 var board_radius_ring; 	// szerokość jednego pierścienia
-
-var board; 	//obsolete?
-var ctx; 	//obsolete?
 
 var pawns; 		//nasz obiekt
 var pawns_radius; 	//promień szachownicy wraz z brzegiem
@@ -35,7 +31,6 @@ Number.prototype.mod = function(n) {
 	return ((this%n)+n)%n; //modulo zrobione tak żeby nie było negative
 }
 
-//window.addEventListener("load", initBoard);
 window.addEventListener("load", initPawns);
 
 function initPawns(){
@@ -180,14 +175,14 @@ function pospolar(x,y) {
 }
 
 function phiboard(canvasatan2) {
-	return (math.PI*(5/6))-canvasatan2
+	return (Math.PI*(5/6))-canvasatan2
 }
 function phicanvas(boardphi) {
 	return phiboard(boardpci)
 }
 
 function boardrankfile(boardphi,radius) {
-	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (math.PI/12) ) ).mod(24) ]
+	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (Math.PI/12) ) ).mod(24) ]
 }
 
 function chesspos(rankfile) {
@@ -237,82 +232,6 @@ function remove(nazwa){
 	.drawLayers();
 }
 /*** KONIEC PIONKOW ***/
-
-/***Stary zwykły Canvas rysujący szachownicę***/
-/*function initBoard(){
-	board = document.getElementById('board');
-	if (board.getContext){
-		ctx = board.getContext('2d');
-		if(board.width < board.height){
-			board_radius = board.width/2;
-		} else {
-			board_radius = board.height/2;
-		}
-		board_radius_rim = board_radius-board_radius/20;
-		board_radius_ring = board_radius_rim/8;
-		ctx.translate(board_radius,board_radius);
-		//drawBoard();
-	}
-}
-
-function drawBoard() {
-	ctx.beginPath();
-	ctx.fillStyle=color_rim;
-	ctx.arc(0,0,board_radius,0,2*Math.PI);
-	ctx.closePath();
-	ctx.fill();
-
-	var i;
-	var j;
-	var licz = 0;
-	var l;
-	var w;
-	for(j = 0; j < 6; j++) {
-		for(i = 0; i < 24; i++){
-			ctx.beginPath();
-			if(licz%2 == 0) {
-				ctx.fillStyle = color_field_1;
-			} else {
-				ctx.fillStyle = color_field_2;
-			}
-			ctx.rotate(Math.PI/12);
-			ctx.moveTo(0,0);
-			l = board_radius_rim*(8-j)/8;
-			ctx.lineTo(l,0);
-			ctx.arc(0,0,l,0,Math.PI/12);
-			ctx.closePath();
-			ctx.fill();
-			licz++;
-		}
-
-		if(j < 3){
-		w = Math.PI/120*((4-j)/4);
-		ctx.rotate(Math.PI/6);
-		ctx.rotate(-w/2);
-			for(i = 0; i < 3; i++){
-					l = board_radius_rim;
-					ctx.beginPath();
-					ctx.moveTo(0,0);
-					ctx.lineTo(l,0);
-					ctx.arc(0,0,l,0,w);
-					ctx.closePath();
-					ctx.fillStyle = color_moat;
-					ctx.fill();
-					ctx.rotate(Math.PI*2/3);
-				}
-				ctx.rotate(-Math.PI/6);
-				ctx.rotate(w/2);
-			}
-		licz++;
-	}
-	l = board_radius_rim*2/8;
-	ctx.beginPath();
-	ctx.arc(0,0,l,0,2*Math.PI);
-	ctx.fillStyle=color_rim;
-	ctx.closePath();
-	ctx.fill();
-}*/
-
 
 /*** Adres obrazków pionków **/
 const basepionki = "res/pionki/Chess_";
