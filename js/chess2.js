@@ -180,7 +180,7 @@ function pospolar(x,y) {
 }
 
 function phiboard(canvasatan2) {
-	return (math.PI*(5/6))-canvasatan2
+	return (Math.PI*(5/6))-canvasatan2
 }
 function phicanvas(boardphi) {
 	return phiboard(boardpci)
