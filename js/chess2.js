@@ -187,7 +187,7 @@ function posangle(x,y) {
 }
 
 function poscartes(phi,r) {
-	return [Math.cos(phi)*r,Math.sin(phi)*r]
+	return [Math.cos(phi)*r,Math.sin(phi)*r] //TODO: there is like a great disturbance in the Force somewhere in here
 }
 
 function pospolar(x,y) {
@@ -198,7 +198,7 @@ function phiboard(canvasatan2) {
 	return (Math.PI*(1/3))-canvasatan2
 }
 function phicanvas(boardphi) {
-	return phiboard(boardpci)
+	return phiboard(boardphi)
 }
 
 function boardrankfile(boardphi,radius) {
@@ -218,6 +218,12 @@ function kat(x, y){
 }
 
 function pozycjasrodekpolarny(rankfile) {
+	return {phi: (rankfile[1]+0.5)*Math.PI/12, r: (-rankfile[0]+7+0.5)*board_radius_ring}
+}
+
+function pozycjasrodka(rankfile) {
+	var a = pozycjasrodekpolarny(rankfile);
+	return poscartes(phicanvas(a.phi),a.r)
 }
 function przykladowePodswietlenie(){
 	changeColor(1, 1);
