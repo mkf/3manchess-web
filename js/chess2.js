@@ -187,7 +187,7 @@ function phicanvas(boardphi) {
 }
 
 function boardrankfile(boardphi,radius) {
-	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (math.PI/12) ) ).mod(24) ]
+	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (Math.PI/12) ) ).mod(24) ]
 }
 
 function chesspos(rankfile) {
