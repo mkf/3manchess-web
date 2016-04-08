@@ -56,8 +56,11 @@ function initPawns(){
 		var x = event.clientX-pawns_radius;
 		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był (0,0)
 		var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
+		console.log(strad);
 		boardstrad=phiboard(strad[0]); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
-		var boardpos = boardrankfile(boardstrad,strad[1]) 	//pozycja szachownicowa położenia myszy
+		console.log(boardstrad);
+		var boardpos = boardrankfile(boardstrad,strad[1]); 	//pozycja szachownicowa położenia myszy
+		console.log(boardpos);
 		if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
 			boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
 		}
