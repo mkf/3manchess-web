@@ -114,11 +114,6 @@ function drawField(a, b){
 		radius: r_1
 	  },
 	  p2: {
-		type: 'line',
-		x1: 0, y1: 0,
-		x2: 100, y2: 100
-	  },
-	  p3: {
 		type: 'arc',
 		x: 0, y: 0,
 		start: ang_start, end: ang_stop,
