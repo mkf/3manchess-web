@@ -268,7 +268,7 @@ function pionekurl(color, figtype) {
 	}
 	switch (figtype) {
 		case Tools.Rook: typ="r";break;
-		case Tools.Knight: typ="r";break;
+		case Tools.Knight: typ="n";break;
 		case Tools.Bishop: typ="b";break;
 		case Tools.King: typ="k";break;
 		case Tools.Queen: typ="q";break;
