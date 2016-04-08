@@ -294,3 +294,25 @@ function drawBoard() {
 	ctx.closePath();
 	ctx.fill();
 }
+
+const basepionki = "res/pionki/Chess_";
+const baseendpionki = "t60.png";
+
+function pionekurl(color, figtype) {
+	var typ = "";
+	var kol = "";
+	switch (color) {
+		case Tools.White: kol="l";break;
+		case Tools.Gray: kol="g";break;
+		case Tools.Black: kol="d";break;
+	}
+	switch (figtype) {
+		case Tools.Rook: typ="r";break;
+		case Tools.Knight: typ="n";break;
+		case Tools.Bishop: typ="b";break;
+		case Tools.King: typ="k";break;
+		case Tools.Queen: typ="q";break;
+		case Tools.Pawn: typ="p";break;
+	}
+	return basepionki+typ+kol+baseendpionki;
+}
