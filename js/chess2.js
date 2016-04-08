@@ -274,6 +274,13 @@ function animujPionek(poz){
 	}, 1000);
 }
 
+function zanikaniePionka(nazwa){
+	$('#pawns').animateLayer(nazwa, {
+		opacity: 0
+	}, 500)
+	.drawLayers();
+}
+
 function przesunPionek(x, y, nazwa){
 	$('#pawns').setLayer(nazwa, {
 		x: x, y: y
