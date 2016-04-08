@@ -65,6 +65,7 @@ function initPawns(){
 		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był (0,0)
 		var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
 		console.log(strad);
+		console.log(poscartes(strad.phi,strad.r));
 		boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
 		console.log(boardstrad);
 		var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
@@ -191,7 +192,7 @@ function posangle(x,y) {
 }
 
 function poscartes(phi,r) {
-	return [Math.cos(phi)*r,Math.sin(phi)*r] //TODO: there is like a great disturbance in the Force somewhere in here
+	return [Math.sin(phi)*r,Math.cos(phi)*r] //exchanged sin with cos
 }
 
 function pospolar(x,y) {
