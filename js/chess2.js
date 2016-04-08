@@ -28,7 +28,7 @@ var pawns_radius;
 
 /******************************/
 
-window.addEventListener("load", initBoard);
+//window.addEventListener("load", initBoard);
 window.addEventListener("load", initPawns);
 
 function initPawns(){
@@ -38,16 +38,28 @@ function initPawns(){
 	} else {
 		pawns_radius = pawns.height/2;
 	}
+	board_radius_rim = pawns_radius-pawns_radius/20;
+	board_radius_ring = board_radius_rim/8;
 	$('#pawns').translateCanvas({
 	  translateX: pawns_radius, translateY: pawns_radius
+	})
+	.drawArc({
+		fillStyle: color_rim,
+		layer: true,
+		name: 'rim',
+		x: 0, y: 0,
+		radius: pawns_radius,
+		start: 0, stop: 360
 	});
 	pawns.addEventListener ("mousemove", function (event) {
         var x = event.clientX-pawns_radius;
         var y = event.clientY-pawns_radius;
 		var st = kat(x, y);
-		var kol = Math.round((st+7.5)/15);
-		var pier = Math.round((Math.pow(x*x+y*y, (1/2))-(1/2*board_radius_ring))/board_radius_ring)-1;
-		if(pier < 1 || pier > 6){
+		var kol = Math.round((st+7.5)/15)-1;
+		kol = kol-8;
+		if(kol < 0) kol = kol+24;
+		var pier = 7-Math.round((Math.pow(x*x+y*y, (1/2))-(1/2*board_radius_ring))/board_radius_ring);
+		if(pier < 0 || pier > 5){
 			pier = "X";
 			kol = "X";
 		}
@@ -63,8 +75,8 @@ function initPawns(){
 
 function drawFields(){
         var i, j;
-		for(i = 1; i <= 24; i++){
-			for(j = 1; j <= 6; j++){
+		for(i = 0; i <= 23; i++){
+			for(j = 0; j <= 5; j++){
 				drawField(i, j);
 			}
 		}
@@ -72,9 +84,9 @@ function drawFields(){
 }
 
 function drawField(a, b){
-	var ang_start = 15*(a-1);
+	var ang_start = 8*15+15*a;
 	var ang_stop = ang_start+15;
-	var r_1 = (b+1)*board_radius_ring;
+	var r_1 = (7-b)*board_radius_ring;
 	var r_2 = r_1+board_radius_ring;
 	var w = a;
 	if(b%2 == 1){
@@ -103,7 +115,7 @@ function drawField(a, b){
 
 function changeColor(a, b){
 	var color;
-	var w = a;
+	var w = a+1;
 	if(b%2 == 1){
 		w++;
 	}
@@ -121,9 +133,9 @@ function standardColor(){
 	var i, j;
 	var color;
 	var w;
-	for(i = 1; i <= 24; i++){
-		for(j = 1; j <= 6; j++){
-			w = i;
+	for(i = 0; i <= 23; i++){
+		for(j = 0; j <= 5; j++){
+			w = i+1;
 			if(j%2 == 1){
 				w++;
 			}
@@ -138,17 +150,6 @@ function standardColor(){
 		}
 	}
 	$('#pawns').drawLayers();
-}
-
-function przykladowePodswietlenie(){
-	changeColor(1, 1);
-	changeColor(2,2);
-	changeColor(3,3);
-	changeColor(4,3);
-	changeColor(10,4);
-	changeColor(11,4);
-	changeColor(11,5);
-	draw();
 }
 
 function draw(){
@@ -184,7 +185,16 @@ function kat(x, y){
 }
 
 function pozycjasrodekpolarny(rankfile) {
-	
+}
+function przykladowePodswietlenie(){
+	changeColor(1, 1);
+	changeColor(2,2);
+	changeColor(3,3);
+	changeColor(4,3);
+	changeColor(10,4);
+	changeColor(11,4);
+	changeColor(11,5);
+	draw();
 }
 
 /*** PIONKI ***/
@@ -211,7 +221,7 @@ function remove(nazwa){
 /*** KONIEC PIONKOW ***/
 
 /***Stary zwykły Canvas rysujący szachownicę***/
-function initBoard(){
+/*function initBoard(){
 	board = document.getElementById('board');
 	if (board.getContext){
 		ctx = board.getContext('2d');
@@ -223,7 +233,7 @@ function initBoard(){
 		board_radius_rim = board_radius-board_radius/20;
 		board_radius_ring = board_radius_rim/8;
 		ctx.translate(board_radius,board_radius);
-		drawBoard();
+		//drawBoard();
 	}
 }
 
@@ -283,8 +293,10 @@ function drawBoard() {
 	ctx.fillStyle=color_rim;
 	ctx.closePath();
 	ctx.fill();
-}
+}*/
 
+
+/*** Adres obrazków pionków **/
 const basepionki = "res/pionki/Chess_";
 const baseendpionki = "t60.png";
 
