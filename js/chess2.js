@@ -88,8 +88,8 @@ function initPawns(){
 
 function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
 	var i, j;
-	for(i = 0; i < 24; i++){
-		for(j = 0; j < 6; j++){
+	for(i = 0; i < 6; i++){
+		for(j = 0; j < 24; j++){
 			drawField(i, j); 
 		}
 	}
@@ -97,12 +97,12 @@ function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
 }
 
 function drawField(a, b){  	//drawField(file, rank)
-	var ang_start = 8*15+15*a;
+	var ang_start = 8*15+15*b;
 	var ang_stop = ang_start+15;
-	var r_1 = (7-b)*board_radius_ring;
+	var r_1 = (7-a)*board_radius_ring;
 	var r_2 = r_1+board_radius_ring;
-	var w = a;
-	if(b%2 == 1){
+	var w = b;
+	if(a%2 == 1){
 		w++;
 	}
 	$('#pawns').drawPath({
@@ -130,7 +130,7 @@ function drawField(a, b){  	//drawField(file, rank)
 					width: pionek_width,
 					height: pionek_height
 				});
-				animujPionek(pozycjasrodka([b,25-a]));
+				animujPionek(pozycjasrodka([a,25-b]));
 			}
 		}
 	});
@@ -138,8 +138,8 @@ function drawField(a, b){  	//drawField(file, rank)
 
 function changeColor(a, b){
 	var color;
-	var w = a+1;
-	if(b%2 == 1){
+	var w = b+1;
+	if(a%2 == 1){
 		w++;
 	}
 	if(w%2 == 0){
@@ -156,8 +156,8 @@ function standardColor(){
 	var i, j;
 	var color;
 	var w;
-	for(i = 0; i < 24; i++){
-		for(j = 0; j < 6; j++){
+	for(i = 0; i < 6; i++){
+		for(j = 0; j < 24; j++){
 			w = i+1;
 			if(j%2 == 1){
 				w++;
@@ -235,9 +235,9 @@ function przykladowePodswietlenie(){
 	changeColor(2,2);
 	changeColor(3,3);
 	changeColor(4,3);
-	changeColor(10,4);
-	changeColor(11,4);
-	changeColor(11,5);
+	changeColor(4,10);
+	changeColor(4,11);
+	changeColor(5,11);
 	draw();
 }
 
