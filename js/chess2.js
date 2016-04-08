@@ -12,8 +12,8 @@ const color_field_1 = "#a65c13";
 const color_field_2 = "#f4d80b";
 const color_moat = "#66ff33";
 
-const color_field_1_light = "#fff";
-const color_field_2_light = "#000";
+const color_field_1_light = "#003300";
+const color_field_2_light = "#009900";
 /******************************/
 
 var board_radius; 
@@ -41,7 +41,6 @@ function initPawns(){
 	$('#pawns').translateCanvas({
 	  translateX: pawns_radius, translateY: pawns_radius
 	});
-	console.log("Polecenie 1");
 	pawns.addEventListener ("mousemove", function (event) {
         var x = event.clientX-pawns_radius;
         var y = event.clientY-pawns_radius;
@@ -59,20 +58,20 @@ function initPawns(){
 		document.getElementById("row").innerHTML = pier;
 		
     });
-	  drawFields();
+	drawFields();
 }
 
 function drawFields(){
-         var i, j;
+        var i, j;
 		for(i = 1; i <= 24; i++){
 			for(j = 1; j <= 6; j++){
 				drawField(i, j);
 			}
 		}
+		standardColor();
 }
 
 function drawField(a, b){
-	var color;
 	var ang_start = 15*(a-1);
 	var ang_stop = ang_start+15;
 	var r_1 = (b+1)*board_radius_ring;
@@ -81,32 +80,11 @@ function drawField(a, b){
 	if(b%2 == 1){
 		w++;
 	}
-	if(w%2 == 0){
-		color = color_field_1_light;
-	} else {
-		color = color_field_2_light;
-	}
 	$('#pawns').drawPath({
-	  fillStyle: color,
-	  strokeWidth: 4,
 	  closed: true,
 	  layer: true,
 	  name: 'l'+a+'_'+b,
 	  x: 0, y: 0,
-	  mouseover: function(layer) {
-		$('#pawns').setLayer(layer, {
-		  visible: true,
-      fillStyle: 'blue'
-		})
-		.drawLayers();
-	  },
-	  mouseout: function(layer) {
-		$('#pawns').setLayer(layer, {
-		  visible: true,
-      fillStyle: color
-		})
-		.drawLayers();
-	  },
 	  p1: {
 		type: 'arc',
 		x: 0, y: 0,
@@ -116,10 +94,69 @@ function drawField(a, b){
 	  p2: {
 		type: 'arc',
 		x: 0, y: 0,
-		start: ang_start, end: ang_stop,
+		ccw: true,
+		start: ang_stop, end: ang_start,
 		radius: r_2
 	  }
 	});
+}
+
+function changeColor(a, b){
+	var color;
+	var w = a;
+	if(b%2 == 1){
+		w++;
+	}
+	if(w%2 == 0){
+		color = color_field_1_light;
+	} else {
+		color = color_field_2_light;
+	}
+	$('#pawns').setLayer('l'+a+'_'+b, {
+		fillStyle: color
+	});
+}
+
+function standardColor(){
+	var i, j;
+	var color;
+	var w;
+	for(i = 1; i <= 24; i++){
+		for(j = 1; j <= 6; j++){
+			w = i;
+			if(j%2 == 1){
+				w++;
+			}
+			if(w%2 == 0){
+				color = color_field_1;
+			} else {
+				color = color_field_2;
+			}
+			$('#pawns').setLayer('l'+i+'_'+j, {
+				fillStyle: color
+			});
+		}
+	}
+	$('#pawns').drawLayers();
+}
+
+function przykladowePodswietlenie(){
+	changeColor(1, 1);
+	changeColor(2,2);
+	changeColor(3,3);
+	changeColor(4,3);
+	changeColor(10,4);
+	changeColor(11,4);
+	changeColor(11,5);
+	draw();
+}
+
+function draw(){
+	$('#pawns').drawLayers();
+}
+
+function removeField(a, b){
+	$('#pawns').removeLayer('l'+a+'_'+b);
 }
 
 function kat(x, y){
@@ -130,6 +167,7 @@ function kat(x, y){
 	}
 }
 
+/***TESTOWANIE PIONKOW***/
 function pawn(){
 	var w = board_radius_ring/2;
 	$('#pawns').addLayer({
@@ -180,7 +218,9 @@ function pionek2(x, y){
 	})
 	.drawLayers();
 }
+/***KONIEC TESTOWANIE PIONKOW***/
 
+/***Stary zwykły Canvas rysujący szachownicę***/
 function initBoard(){
 	board = document.getElementById('board');
 	if (board.getContext){
