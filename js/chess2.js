@@ -167,58 +167,28 @@ function kat(x, y){
 	}
 }
 
-/***TESTOWANIE PIONKOW***/
-function pawn(){
-	var w = board_radius_ring/2;
-	$('#pawns').addLayer({
-	  type: 'rectangle',
-	  name: 'pionek_1',
-	  fillStyle: '#585',
-	  x: 0, y: 0,
-	  width: w, height: w
+/*** PIONKI ***/
+function pionek(color, figtype, nazwa){
+	$('#pawns').drawImage({
+		layer: true,
+		name: nazwa,
+		source: pionekurl(color, figtype),
+		x: 0, y: 0
+	});
+}
+
+function przesunPionek(x, y, nazwa){
+	$('#pawns').setLayer(nazwa, {
+		x: x, y: y
 	})
 	.drawLayers();
-}
-
-function pionek(x, y, nazwa){
-	$('#pawns').drawArc({
-	  strokeStyle: '#000',
-	  strokeWidth: 5,
-	  x: x, y: y,
-	  radius: 50,
-	  layer: true,
-	  name: nazwa
-	});
-}
-
-function animate(x1, y1, x2, y2, nazwa){
-	$('#pawns').animateLayer(nazwa, {
-	  x: x1, y: y1,
-	  strokeStyle: '#fff'
-	}, 1000, function(layer) {
-	  $(this).animateLayer(layer, {
-		strokeStyle: '#000',
-		x: x2, y: y2
-	  }, 'slow', 'swing');
-	});
 }
 
 function remove(nazwa){
-	$('#pawns').removeLayer(nazwa);
-	$('#pawns').drawLayers();
-}
-
-function pionek2(x, y){
-	// Create a rectangle layer
-	$('#pawns').addLayer({
-	  type: 'rectangle',
-	  fillStyle: '#585',
-	  x: x, y: y,
-	  width: 100, height: 50
-	})
+	$('#pawns').removeLayer(nazwa)
 	.drawLayers();
 }
-/***KONIEC TESTOWANIE PIONKOW***/
+/*** KONIEC PIONKOW ***/
 
 /***Stary zwykły Canvas rysujący szachownicę***/
 function initBoard(){
