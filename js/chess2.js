@@ -26,7 +26,14 @@ var ctx;
 var pawns;
 var pawns_radius;
 
+var color_rotation; //color which is on the bottom, not on the left side nor on the right side
+//potrzebny jest przycisk który będzie zmieniał tą zmienną na wybrany kolor i triggerował przerysowanie planszy
+
 /******************************/
+
+Number.prototype.mod = function(n) {
+	return ((this%n)+n)%n;
+}
 
 //window.addEventListener("load", initBoard);
 window.addEventListener("load", initPawns);
@@ -54,20 +61,17 @@ function initPawns(){
 	pawns.addEventListener ("mousemove", function (event) {
         var x = event.clientX-pawns_radius;
         var y = event.clientY-pawns_radius;
-		var st = kat(x, y);
-		var kol = Math.round((st+7.5)/15)-1;
-		kol = kol-8;
-		if(kol < 0) kol = kol+24;
-		var pier = 7-Math.round((Math.pow(x*x+y*y, (1/2))-(1/2*board_radius_ring))/board_radius_ring);
-		if(pier < 0 || pier > 5){
-			pier = "X";
-			kol = "X";
+		var strad = pospolar(x,y);
+		boardstrad=phiboard(strad[0]);
+		var boardpos = boardrankfile(boardstrad,strad[1])
+		if(boardpos[0] < 0 || boardpos[0] > 5){
+			boardpos = [false,false];
 		}
 		
-		console.log("x: "+x+" y: "+y+" kąt: "+Math.round(st)+" st. kol: "+kol);
+		console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
 		
-		document.getElementById("col").innerHTML = kol;
-		document.getElementById("row").innerHTML = pier;
+		document.getElementById("col").innerHTML = boardpos[1];
+		document.getElementById("row").innerHTML = boardpos[0];
 		
     });
 	drawFields();
@@ -174,6 +178,21 @@ function poscartes(phi,r) {
 
 function pospolar(x,y) {
 	return {phi:posangle(x,y),r:posradius(x,y)}
+}
+
+function phiboard(canvasatan2) {
+	return (math.PI*(5/6))-canvasatan2
+}
+function phicanvas(boardphi) {
+	return phiboard(boardpci)
+}
+
+function boardrankfile(boardphi,radius) {
+	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (math.PI/12) ) ).mod(24) ]
+}
+
+function chesspos(rankfile) {
+	return [rankfile[0],   rankfile[1] +   (  8 * (color_rotation-1)  )   ]
 }
 
 function kat(x, y){
