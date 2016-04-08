@@ -159,12 +159,32 @@ function removeField(a, b){
 	$('#pawns').removeLayer('l'+a+'_'+b);
 }
 
+function posradius(x,y) {
+	return Math.pow(x*x+y*y,(1/2))
+}
+
+function posangle(x,y) {
+	return Math.atan2(x,y)
+}
+
+function poscartes(phi,r) {
+	return [Math.cos(phi)*r,Math.sin(phi)*r]
+}
+
+function pospolar(x,y) {
+	return {phi:posangle(x,y),r:posradius(x,y)}
+}
+
 function kat(x, y){
 	if(x >= 0){
 		return Math.acos((-y)/Math.pow(x*x+y*y, (1/2)))*(180/Math.PI);
 	} else {
 		return 360-Math.acos((-y)/Math.pow(x*x+y*y, (1/2)))*(180/Math.PI);
 	}
+}
+
+function pozycjasrodekpolarny(rankfile) {
+	
 }
 
 /*** PIONKI ***/
