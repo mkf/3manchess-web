@@ -30,10 +30,24 @@ var pionekClikedName; //nazwa pionka podświetlonego
 
 var pionek_width = 60; //wymiary pionkow
 var pionek_height = 60;
-var pionek_width_light = 70;
-var pionek_height_light = 70;
+var pionek_width_light = 40;
+var pionek_height_light = 40;
+
+var gameboard = cleanboard();
+var nazwypionkow = cleanboard();
 
 /******************************/
+
+function cleanboard() {
+	var clearboard = [];
+	var clearrow = [];
+	for (var i=0;i<24;i++) {
+		clearrow.push(null);
+	}
+	for (var i=0;i<6;i++) {
+		clearboard.push(clearrow);
+	}
+}
 
 Number.prototype.mod = function(n) {
 	return ((this%n)+n)%n; //modulo zrobione tak żeby nie było negative
@@ -124,9 +138,9 @@ function drawField(a, b){  	//drawField(file, rank)
 			radius: r_2
 		},
 		click: function(layer){
-			if(pionekIsCliked){
-				pionekIsCliked = false;
-				$('#pawns').setLayer(pionekClikedName,{
+			if(pionekIsCliked){					//typo : Cli_c_ked
+				pionekIsCliked = false;				//typo : Cli_c_ked
+				$('#pawns').setLayer(pionekClikedName,{		//typo : Cli_c_ked
 					width: pionek_width,
 					height: pionek_height
 				});
@@ -230,7 +244,7 @@ function pozycjasrodka(rankfile) {
 	var a = pozycjasrodekpolarny(rankfile);
 	return poscartes(phicanvas(a.phi),a.r)
 }
-function przykladowePodswietlenie(){
+function przykladowePodswietlenie(){ 	//test podświetlenia pól
 	changeColor(1, 1);
 	changeColor(2,2);
 	changeColor(3,3);
@@ -242,10 +256,12 @@ function przykladowePodswietlenie(){
 }
 
 /*** PIONKI ***/
-function pionek(color, figtype, nazwa, poz){
+
+//pionek: nowy pionek, konstruowany z kolory, typu, nazwy obiektu (initpos?) i współrzędnych canvasa
+function pionek(color, figtype, nazwa, poz){ 	
 	$('#pawns').drawImage({
 		layer: true,
-		name: nazwa,
+		name: nazwa, 
 		source: pionekurl(color, figtype),
 		x: poz[0], y: poz[1],
 		width: pionek_width,
