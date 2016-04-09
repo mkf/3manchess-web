@@ -233,6 +233,23 @@ var Client = function (baseUrl) {
         });
     };
 
+    this.diff = function(moveid,callback,callbackParameters) {
+	    jQuery.ajax({
+		    url: this.baseURL + "api/move/"+moveid+"/diff",
+		    type:"GET",
+		    dataType:"json",
+		    complete: function() {
+		    },
+		    success: function (data) {
+			    console.log(data);
+			    callback(data,callbackParameters);
+		    },
+		    error: function(err) {
+			    console.log(err);
+		    }
+		});
+    };
+
     this.newBot = function (whoami, owner, userauth, ownname, settings, callback, callbackParameters) {
         jQuery.ajax({
             url: this.baseURL + "api/newbot",
