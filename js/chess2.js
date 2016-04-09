@@ -97,13 +97,13 @@ function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
 }
 
 function drawField(a, b){  	//drawField(file, rank)
-	var ang_start = 8*15+15*b;
-	var ang_stop = ang_start+15;
-	var r_1 = (7-a)*board_radius_ring;
-	var r_2 = r_1+board_radius_ring;
-	var w = b;
-	if(a%2 == 1){
-		w++;
+	var ang_start = 8*15+15*b; // zaczynamy od 120°, potem jedziemy co 15° (jeden file)
+	var ang_stop = ang_start+15; // rysujemy jeden file-łuk, czyli 15°
+	var r_1 = (7-a)*board_radius_ring;  //rysujemy rank-promień, konwersja pozycji boardowej
+	var r_2 = r_1+board_radius_ring; //po drugiej stronie ranka
+	var w = b;  	//obsolete?
+	if(a%2 == 1){	//obsolete?
+		w++;	//obsolete?
 	}
 	$('#pawns').drawPath({
 		closed: true,
