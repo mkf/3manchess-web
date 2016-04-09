@@ -11,3 +11,5 @@ var Figure = function (figtype, color, pawncenter) {
         return (this.figtype == 0);
     };
 };
+
+//var SingleDiff = function (
