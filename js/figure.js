@@ -12,4 +12,23 @@ var Figure = function (figtype, color, pawncenter) {
     };
 };
 
-//var SingleDiff = function (
+var SingleDiff = function (obj) {
+	this.afterfig=Tools.uint8toFigure(obj.afterfig);
+	this.beforefig=Tools.uint8toFigure(obj.beforefig);
+	this.where=obj.where;
+	this.execute = function (callonappear,callonreplace,callondisappear) {
+		if this.beforefig.empty() {
+			if this.afterfig.empty() {
+				console.log(this);
+			} else {
+				callonappear(this);
+			}
+		} else {
+			if this.afterfig.empty() {
+				callondisappear(this);
+			} else {
+				callonreplace(this);
+			}
+		}
+	};
+};
