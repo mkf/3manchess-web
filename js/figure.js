@@ -17,14 +17,14 @@ var SingleDiff = function (obj) {
 	this.beforefig=Tools.uint8toFigure(obj.beforefig);
 	this.where=obj.where;
 	this.execute = function (callonappear,callonreplace,callondisappear) {
-		if this.beforefig.empty() {
-			if this.afterfig.empty() {
+		if (this.beforefig.empty()) {
+			if (this.afterfig.empty()) {
 				console.log(this);
 			} else {
 				callonappear(this);
 			}
 		} else {
-			if this.afterfig.empty() {
+			if (this.afterfig.empty()) {
 				callondisappear(this);
 			} else {
 				callonreplace(this);
