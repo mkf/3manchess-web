@@ -95,10 +95,12 @@ function initPawns(){
 		document.getElementById("row").innerHTML = boardpos[0];
 	});
 	drawFields();
-	pionek(1,1,"p1",pozycjasrodka([0,0]));
-	pionek(3,3,"p2",pozycjasrodka([4,10]));
-	pionek(2,2,"p3",pozycjasrodka([5,20]));
+	pionek(1,1,"p1",[0,0]);
+	pionek(3,3,"p2",[4,10]);
+	pionek(2,2,"p3",[5,20]);
 }
+
+
 
 function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
 	var i, j;
@@ -228,6 +230,10 @@ function chesspos(rankfile) {
 	return [rankfile[0],   rankfile[1] +   (  8 * (color_rotation-1)  )   ]
 }
 
+function dechess(poschess) {
+	return [poschess[0],  poschess[1] - ( 8 * (color_rotation-1) )  ]
+}
+
 function kat(x, y){
 	if(x >= 0){
 		return Math.acos((-y)/Math.pow(x*x+y*y, (1/2)))*(180/Math.PI);
@@ -242,7 +248,7 @@ function pozycjasrodekpolarny(rankfile) {
 
 function pozycjasrodka(rankfile) {
 	var a = pozycjasrodekpolarny(rankfile);
-	return poscartes(phicanvas(a.phi),a.r)
+	return poscartes(phicanvas(a.phi),a.r);
 }
 function przykladowePodswietlenie(){ 	//test podświetlenia pól
 	changeColor(1, 1);
@@ -258,7 +264,8 @@ function przykladowePodswietlenie(){ 	//test podświetlenia pól
 /*** PIONKI ***/
 
 //pionek: nowy pionek, konstruowany z kolory, typu, nazwy obiektu (initpos?) i współrzędnych canvasa
-function pionek(color, figtype, nazwa, poz){ 	
+function pionek(color, figtype, nazwa, poschess){ 	
+	var poz = pozycjasrodka(dechess(poschess));
 	$('#pawns').drawImage({
 		layer: true,
 		name: nazwa, 
