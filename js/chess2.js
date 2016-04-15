@@ -38,6 +38,10 @@ var nazwypionkow = cleanboard();
 
 /******************************/
 
+function nazwapola(chesspos) {
+	return "pos"+chesspos+"";
+}
+
 function cleanboard() {
 	var clearboard = [];
 	var clearrow = [];
