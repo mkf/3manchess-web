@@ -15,8 +15,7 @@ $("#game_form").submit(function() {
 $("#loginform").submit(function() {
 	var loginu=$("#logininput").val();
 	var passwdu=$"#passwdinput").val();
-		klie.login(loginu,passwdu,
-	function(data) {
+	klie.login(loginu,passwdu,function(data) {
 		authdat=data;
 	});
 return false;
