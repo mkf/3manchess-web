@@ -6,7 +6,7 @@ var authdat;
 var klie = Client("http://platinum.edu.pl:8082/");
 
 $("#game_form").submit(gameformsubmit);
-		
+
 var gameformsubmit = function() {
 	gameID=$("#gameid_input").val();
 
