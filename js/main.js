@@ -17,6 +17,7 @@ $("#loginform").submit(function() {
 	var loginu=$("#logininput").val();
 	var passwdu=$("#passwdinput").val();
 	console.log(loginu,passwdu);
+	console.log(klie);
 	klie.login(loginu,passwdu,function(data) {
 		console.log(data);
 		authdat=data;
