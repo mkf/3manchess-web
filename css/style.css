@@ -9,3 +9,7 @@ canvas {
 	text-align: center;
 	font-weight: bold;
 }
+div.gameforms {
+	position: absolute;
+	left: 700px;
+}
