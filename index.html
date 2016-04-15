@@ -18,5 +18,16 @@
    <canvas id="pawns" width="640" height="640"></canvas>
    <div>Kolumna: <div id="col" class="lab">X</div></div>
    <div>Pierścień: <div id="row" class="lab">X</div></div>
+ <form id="game_form">
+     <input id="gameid_input">
+     <button type="submit" id="form_submit">Wyślij</button>
+ </form>
  </body>
+<script>
+    $("#game_form").submit(function() {
+        var gameId = $("#gameid_input").val();
+        return false;
+    });
+</script>
 </html>
+
