@@ -22,7 +22,7 @@ var board_radius_ring; 	// szerokość jednego pierścienia
 var pawns; 		//nasz obiekt
 var pawns_radius; 	//promień szachownicy wraz z brzegiem
 
-var color_rotation; 	//color który jest na dole zwrócony w stronę usera
+var color_rotation = 1; 	//color który jest na dole zwrócony w stronę usera //demo: 1, will be NaN by def (there should be no default here)
 //	potrzebny jest przycisk który będzie zmieniał tą zmienną na wybrany kolor i triggerował przerysowanie planszy
 
 var pionekIsCliked = false; //czy pionek został klinięty
