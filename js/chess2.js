@@ -200,38 +200,38 @@ function removeField(a, b){
 }
 
 function posradius(x,y) {  //zwraca promień = √(x²+y²)
-	return Math.pow(x*x+y*y,(1/2))
+	return Math.pow(x*x+y*y,(1/2));
 }
 
 function posangle(x,y) {
-	return Math.atan2(x,y)
+	return Math.atan2(x,y);
 }
 
 function poscartes(phi,r) {
-	return [Math.sin(phi)*r,Math.cos(phi)*r] //exchanged sin with cos
+	return [Math.sin(phi)*r,Math.cos(phi)*r]; //exchanged sin with cos
 }
 
 function pospolar(x,y) {
-	return {phi:posangle(x,y),r:posradius(x,y)}
+	return {phi:posangle(x,y),r:posradius(x,y)};
 }
 
 function phiboard(canvasatan2) {
-	return (Math.PI*(1/3))-canvasatan2
+	return (Math.PI*(1/3))-canvasatan2;
 }
 function phicanvas(boardphi) {
-	return phiboard(boardphi)
+	return phiboard(boardphi);
 }
 
 function boardrankfile(boardphi,radius) {
-	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (Math.PI/12) ) ).mod(24) ]
+	return [ 7 - Math.floor( radius/board_radius_ring ) , ( Math.floor( boardphi / (Math.PI/12) ) ).mod(24) ];
 }
 
 function chesspos(rankfile) {
-	return [rankfile[0],   rankfile[1] +   (  8 * (color_rotation-1)  )   ]
+	return [rankfile[0],   rankfile[1] +   (  8 * (color_rotation-1)  )   ];
 }
 
 function dechess(poschess) {
-	return [poschess[0],  poschess[1] - ( 8 * (color_rotation-1) )  ]
+	return [poschess[0],  poschess[1] - ( 8 * (color_rotation-1) )  ];
 }
 
 function kat(x, y){
@@ -243,7 +243,7 @@ function kat(x, y){
 }
 
 function pozycjasrodekpolarny(rankfile) {
-	return {phi: (rankfile[1]+0.5)*Math.PI/12, r: (-rankfile[0]+7+0.5)*board_radius_ring}
+	return {phi: (rankfile[1]+0.5)*Math.PI/12, r: (-rankfile[0]+7+0.5)*board_radius_ring};
 }
 
 function pozycjasrodka(rankfile) {
