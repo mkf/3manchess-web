@@ -3,7 +3,7 @@ var loginu="";
 var passwordu="";
 var authdat;
 
-var klie = Client("http://platinum.edu.pl:8082/");
+var klie = new Client("http://platinum.edu.pl:8082/");
 
 $("#game_form").submit(gameformsubmit);
 
