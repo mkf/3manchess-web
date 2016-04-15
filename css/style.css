@@ -16,28 +16,33 @@ canvas {
 div.gameforms {
 	position: absolute;
 	right: 50px;
+	min-width: 300px;
 	border: 3px dashed #008000;
 	border-radius: 25px;
 	background-color: #ccff99;
 }
-form, .form_userid {
+.gameform {
 	margin: 20px 30px;
 }
-button {
+.gameforms_button {
 	width: 100%;
 	margin-top: 5px;
+	font-size: 15px;
 }
-hr {
+.gameforms_hr {
 	border: 2px dashed #008000;
 	margin: 0 5px;
 }
-input {
+.gameforms_input {
 	width: calc(100% - 5px);
 	font-size: 13px;
 	font-weight: bold;
+	display: block;
 }
-label {
+ .gameforms_label {
+	margin-top: 3px;
 	color: green;
 	font-size: 13px;
 	font-weight: bold;
+	display: block;
 }
