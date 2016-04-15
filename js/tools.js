@@ -12,7 +12,7 @@ var Tools = {
     Black: 3,
 
     uint8ToFigure: function (uint8) {
-        return new Figure(uint8 & 7, (uint8 >> 3) & 7, (uint8 >> 7) > 0);
+        return new Figure(uint8 & 7, (uint8 >> 3) & 7, (uint8 >> 6) > 0);
     },
 
     boardFromUint8: function (sourceBoard) {
