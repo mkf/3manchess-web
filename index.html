@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-  <script type="text/javascript" src="js/jcanvas.js"></script>
-  <script type="text/javascript" src="js/chess2.js"></script>
-    <script type="text/javascript" src="js/tools.js"></script>
-    <script type="text/javascript" src="js/client.js"></script>
-    <script type="text/javascript" src="js/figure.js"></script>
-    <script type="text/javascript" src="js/gameplay.js"></script>
-    <script type="text/javascript" src="js/state.js"></script>
-    <script type="text/javascript" src="js/tools.js"></script>
- </head>
- <body>
-   <canvas id="board" width="640" height="640"></canvas>
-   <canvas id="pawns" width="640" height="640"></canvas>
-   <div>Kolumna: <div id="col" class="lab">X</div></div>
-   <div>Pierścień: <div id="row" class="lab">X</div></div>
- <form id="game_form">
-     <label for="gameid_input">Gameplay ID</label>
-     <input id="gameid_input">
-     <button type="submit" id="form_submit">Wyślij</button>
- </form>
- <form id="loginform">
-	 <label for="logininput">Login</label>
-	 <input id="logininput">
-	 <label for="passwdinput">Password</label>
-	 <input id="passwdinput" type="password">
-	 <button type="submit" id="loginsubmit">Zaloguj</button>
- </form>
- <form id="newgameform">
-	 <label for="whitenew">White PlayerID</label>
-	 <input id="whitenew">
-	 <label for="graynew">Gray PlayerID</label>
-	 <input id="graynew">
-	 <label for="blacknew">Black PlayerID</label>
-	 <input id="blacknew">
-	 <button type="submit" id="newgamesubmit">Nowa gra</button>
- </form>
- </body>
-<script>
-    $("#game_form").submit(function() {
-        var gameId = $("#gameid_input").val();
-        return false;
-    });
-</script>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/jcanvas.js"></script>
+		<script type="text/javascript" src="js/chess2.js"></script>
+		<script type="text/javascript" src="js/tools.js"></script>
+		<script type="text/javascript" src="js/client.js"></script>
+		<script type="text/javascript" src="js/figure.js"></script>
+		<script type="text/javascript" src="js/gameplay.js"></script>
+		<script type="text/javascript" src="js/state.js"></script>
+		<script type="text/javascript" src="js/tools.js"></script>
+	</head>
+	<body>
+		<canvas id="board" width="640" height="640"></canvas>
+		<canvas id="pawns" width="640" height="640"></canvas>
+		<div>Kolumna: <div id="col" class="lab">X</div></div>
+		<div>Pierścień: <div id="row" class="lab">X</div></div>
+		<form id="game_form">
+			<label for="gameid_input">Gameplay ID</label>
+			<input id="gameid_input">
+			<button type="submit" id="form_submit">Wyślij</button>
+		</form>
+		<form id="loginform">
+			<label for="logininput">Login</label>
+			<input id="logininput">
+			<label for="passwdinput">Password</label>
+			<input id="passwdinput" type="password">
+			<button type="submit" id="loginsubmit">Zaloguj</button>
+		</form>
+		<form id="newgameform">
+			<label for="whitenew">White PlayerID</label>
+			<input id="whitenew">
+			<label for="graynew">Gray PlayerID</label>
+			<input id="graynew">
+			<label for="blacknew">Black PlayerID</label>
+			<input id="blacknew">
+			<button type="submit" id="newgamesubmit">Nowa gra</button>
+		</form>
+	</body>
+	<script>
+$("#game_form").submit(function() {
+	var gameId = $("#gameid_input").val();
+	return false;
+});
+	</script>
 </html>
 

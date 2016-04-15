@@ -1,12 +1,12 @@
 /* encoding="UTF-8" */
 /*******************************
-*
-*
-*		3manchess
-*
-*	Patryk Kisielewski
-*
-*******************************/
+ *
+ *
+ *		3manchess
+ *
+ *	Patryk Kisielewski
+ *
+ *******************************/
 const color_rim = "#ff9900"; //kolor brzegu
 const color_field_1 = "#a65c13"; //kolor ciemnego pola
 const color_field_2 = "#f4d80b"; //kolor jasnego pola
@@ -70,33 +70,33 @@ function initPawns(){
 	board_radius_ring = board_radius_rim/8;    //szerokość jednego pierścienia to promień_bez_brzegu / (2dziury+6ranks)
 	$('#pawns').translateCanvas({
 		translateX: pawns_radius, translateY: pawns_radius}) 	//translacja żeby środek był (0,0)
-	.drawArc({ 			//rysuj brzeg
-		fillStyle: color_rim, 		//brzeg o kolorze brzegu
-		layer: true, 			//jest... warstwą?
-		name: 'rim', 			//nazwiemy go 'rim'
-		x: 0, y: 0, 			//środek łuku w (0,0) po translacji czyli naszym środku
-		radius: pawns_radius, 		//o promieniu całego naszego obiektu
-		start: 0, stop: 360 		//od 0 do 360 (czyli koło)
-	});
+		.drawArc({ 			//rysuj brzeg
+			fillStyle: color_rim, 		//brzeg o kolorze brzegu
+			layer: true, 			//jest... warstwą?
+			name: 'rim', 			//nazwiemy go 'rim'
+			x: 0, y: 0, 			//środek łuku w (0,0) po translacji czyli naszym środku
+			radius: pawns_radius, 		//o promieniu całego naszego obiektu
+			start: 0, stop: 360 		//od 0 do 360 (czyli koło)
+		});
 	pawns.addEventListener ("mousemove", function (event) { //eventlistener na ruch myszy
 		var x = event.clientX-pawns_radius;
 		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był (0,0)
-		var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
-		console.log(strad);
-		console.log(poscartes(strad.phi,strad.r));
-		boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
-		console.log(boardstrad);
-		var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
-		console.log(boardpos);
-		if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
-			boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
-		}
+	var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
+	console.log(strad);
+	console.log(poscartes(strad.phi,strad.r));
+	boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
+	console.log(boardstrad);
+	var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
+	console.log(boardpos);
+	if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
+		boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
+	}
 
-		console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
-		//	daj do logu współrzędne myszy, kąt w stopniach i pozycję szachownicową
+	console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
+	//	daj do logu współrzędne myszy, kąt w stopniach i pozycję szachownicową
 
-		document.getElementById("col").innerHTML = boardpos[1];	//daj pozycję szachownicową do GUI
-		document.getElementById("row").innerHTML = boardpos[0];
+	document.getElementById("col").innerHTML = boardpos[1];	//daj pozycję szachownicową do GUI
+	document.getElementById("row").innerHTML = boardpos[0];
 	});
 	drawFields();
 	pionek(1,1,"p1",[0,0]);
@@ -297,9 +297,9 @@ function pionek(color, figtype, nazwa, poschess){
 
 function animujPionek(poz){
 	$('#pawns')
-	.animateLayer(pionekClikedName, {
-	  x: poz[0], y: poz[1]
-	}, 1000);
+		.animateLayer(pionekClikedName, {
+			x: poz[0], y: poz[1]
+		}, 1000);
 }
 
 function zanikaniePionka(nazwa){
@@ -318,7 +318,7 @@ function przesunPionek(x, y, nazwa){
 
 function remove(nazwa){
 	$('#pawns').removeLayer(nazwa)
-	.drawLayers();
+		.drawLayers();
 }
 /*** KONIEC PIONKOW ***/
 
