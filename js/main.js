@@ -16,7 +16,9 @@ var gameformsubmit = function() {
 $("#loginform").submit(function() {
 	var loginu=$("#logininput").val();
 	var passwdu=$("#passwdinput").val();
+	console.log(loginu,passwdu);
 	klie.login(loginu,passwdu,function(data) {
+		console.log(data);
 		authdat=data;
 	});
 	return false;
@@ -26,7 +28,9 @@ $("#newgameform").submit(function() {
 	var whiteu=$("#whitenew").val();
 	var grayu=$("#graynew").val();
 	var blacku=$("#blacknew").val();
+	console.log(whiteu,grayu,blacku);
 	klie.addGame(JSONlineNEWGAME,whiteu,grayu,blacku,function(data) {
+		console.log(data);
 		$("#gameid_input").val(data.gameid);
 		gameformsubmit();
 	});
