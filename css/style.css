@@ -1,3 +1,7 @@
+body {
+	margin: 0;
+	 font-family: Arial, Helvetica, sans-serif;
+}
 canvas {
 	position: absolute;
 	top: 0;
@@ -13,11 +17,20 @@ div.gameforms {
 	position: absolute;
 	right: 50px;
 	border: 3px dashed #008000;
-	border-radius: 15px;
+	border-radius: 25px;
+	background-color: #ccff99;
 }
 form, .form_userid {
 	margin: 30px;
 }
 button {
 	width: 100%;
+	margin-top: 5px;
+}
+hr {
+	border: 2px dashed #008000;
+	margin: 0 5px;
+}
+input {
+	width: 50%;
 }
