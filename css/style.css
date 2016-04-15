@@ -11,5 +11,13 @@ canvas {
 }
 div.gameforms {
 	position: absolute;
-	left: 700px;
+	right: 50px;
+	border: 3px dashed #008000;
+	border-radius: 15px;
+}
+form, .form_userid {
+	margin: 30px;
+}
+button {
+	width: 100%;
 }
