@@ -151,8 +151,8 @@ var Client = function (baseUrl) {
 		jQuery.ajax({
 			url: this.baseURL + "api/login",
 			type: "POST",
-			dataType: "json",
-			data: {"login": login, "passwd": passwd},
+			dataType: "application/json",
+			data: JSON.stringify({"login": login, "passwd": passwd}),
 			complete: function () {
 			},
 			success: function (data) {
