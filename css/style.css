@@ -21,7 +21,7 @@ div.gameforms {
 	background-color: #ccff99;
 }
 form, .form_userid {
-	margin: 30px;
+	margin: 20px 30px;
 }
 button {
 	width: 100%;
@@ -32,5 +32,12 @@ hr {
 	margin: 0 5px;
 }
 input {
-	width: 50%;
+	width: calc(100% - 5px);
+	font-size: 13px;
+	font-weight: bold;
+}
+label {
+	color: green;
+	font-size: 13px;
+	font-weight: bold;
 }
