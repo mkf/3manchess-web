@@ -10,11 +10,11 @@ $("#game_form").submit(function() {
 
 	return false;
 }
-		);
+);
 
 $("#loginform").submit(function() {
 	var loginu=$("#logininput").val();
-	var passwdu=$"#passwdinput").val();
+	var passwdu=$("#passwdinput").val();
 	klie.login(loginu,passwdu,function(data) {
 		authdat=data;
 	});
