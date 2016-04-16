@@ -28,6 +28,7 @@ var gameformsubmit = function() {
 			//funkcja od boarda
 		});
 	});
+	return false;
 };
 
 $("#loginform").submit(function() {
