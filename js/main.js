@@ -2,6 +2,8 @@ var gameID = -1;
 var loginu="";
 var passwordu="";
 var authdat;
+var gameplaydata;
+var gamestate;
 
 var klie = new Client("http://platinum.edu.pl:8082/");
 
@@ -9,8 +11,23 @@ $("#game_form").submit(gameformsubmit);
 
 var gameformsubmit = function() {
 	gameID=$("#gameid_input").val();
-
-	return false;
+	console.log("gameid_input gave ",gameID);
+	klie.play(gameID,function(data) {
+		console.log(data);
+		gameplaydata = data;
+		$("#whitenew").val(data.whiteplayer);
+		$("#graynew").val(data.grayplayer);
+		$("#blacknew").val(data.blackplayer);
+		//to samo z datą gameplay'a
+		klie.state(data.stateid,function(stadata) {
+			console.log(stadata);
+			gamestate = stadata;
+			//rotacja, jeśli ustawiona żeby obracać na auto
+			//moaty, jak już będą zmienialne (są?)
+			//info kto rusza następny i kto żyje
+			//funkcja od boarda
+		});
+	});
 }
 
 $("#loginform").submit(function() {
