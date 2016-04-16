@@ -48,7 +48,7 @@ $("#newgameform").submit(function() {
 	var grayu=$("#graynew").val();
 	var blacku=$("#blacknew").val();
 	console.log(whiteu,grayu,blacku);
-	klie.addGame(JSONlineNEWGAME,whiteu,grayu,blacku,function(data) {
+	klie.addGame(JSONlikeNEWGAME,whiteu,grayu,blacku,function(data) {
 		console.log(data);
 		$("#gameid_input").val(data.gameid);
 		gameformsubmit();
