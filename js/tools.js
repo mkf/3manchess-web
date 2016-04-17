@@ -17,8 +17,8 @@ var Tools = {
 
 	boardFromUint8: function (sourceBoard) {
 		var source = sourceBoard;
-		for (var y = 1; y < 6; y++) {
-			for (var x = 1; x < 24; x++) {
+		for (var y = 0; y < 6; y++) {
+			for (var x = 0; x < 24; x++) {
 				var t = source[y][x];
 				source[y][x] = Tools.uint8ToFigure(t);
 			}

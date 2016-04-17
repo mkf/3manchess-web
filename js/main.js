@@ -26,6 +26,18 @@ var gamestate;
 
 var klie = new Client("http://platinum.edu.pl:8082/");
 
+var ustawobecny = function() {
+	var pozycja = [0,0];
+	for (pozycja[0]=0;pozycja[0]<6;pozycja[0]++) {
+		for (pozycja[1]=0;pozycja[1]<24;pozycja[1]++) {
+			if (!(gamestate.board[pozycja[0]][pozycja[1]].empty())) {
+				postaw(gamestate.board[pozycja[0]][pozycja[1]],pozycja);
+			} else {
+				zdejmij(pozycja);
+			}
+		}
+	}
+}
 
 var gameformsubmit = function() {
 	gameID=parseInt($("#gameid_input").val());
@@ -43,7 +55,7 @@ var gameformsubmit = function() {
 			//rotacja, jeśli ustawiona żeby obracać na auto
 			//moaty, jak już będą zmienialne (są?)
 			//info kto rusza następny i kto żyje
-			//funkcja od boarda
+			ustawobecny(); //funkcja od boarda
 		});
 	});
 	return false;

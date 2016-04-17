@@ -39,7 +39,7 @@ var nazwypionkow = cleanboard();
 /******************************/
 
 function nazwapola(chesspos) {
-	return "pos"+chesspos+"";
+	return "pos"+chesspos[0]+"a"+chesspos[1]+"";
 }
 
 function cleanboard() {
@@ -51,6 +51,7 @@ function cleanboard() {
 	for (var i=0;i<6;i++) {
 		clearboard.push(clearrow);
 	}
+	return clearboard;
 }
 
 Number.prototype.mod = function(n) {
@@ -80,23 +81,23 @@ function initPawns(){
 		});
 	pawns.addEventListener ("mousemove", function (event) { //eventlistener na ruch myszy
 		var x = event.clientX-pawns_radius;
-		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był (0,0)
-	var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
-	console.log(strad);
-	console.log(poscartes(strad.phi,strad.r));
-	boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
-	console.log(boardstrad);
-	var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
-	console.log(boardpos);
-	if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
-		boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
-	}
+		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był 0,0
+		var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
+		console.log(strad);
+		console.log(poscartes(strad.phi,strad.r));
+		var boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
+		console.log(boardstrad);
+		var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
+		console.log(boardpos);
+		if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
+			boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
+		}
 
-	console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
-	//	daj do logu współrzędne myszy, kąt w stopniach i pozycję szachownicową
+		console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
+		//	daj do logu współrzędne myszy, kąt w stopniach i pozycję szachownicową
 
-	document.getElementById("col").innerHTML = boardpos[1];	//daj pozycję szachownicową do GUI
-	document.getElementById("row").innerHTML = boardpos[0];
+		document.getElementById("col").innerHTML = boardpos[1];	//daj pozycję szachownicową do GUI
+		document.getElementById("row").innerHTML = boardpos[0];
 	});
 	drawFields();
 	pionek(1,1,"p1",[0,0]);
@@ -320,6 +321,24 @@ function remove(nazwa){
 	$('#pawns').removeLayer(nazwa)
 		.drawLayers();
 }
+
+function zdejmij(posinchess){
+	if (nazwypionkow[posinchess[0]][posinchess[1]]!==null) {
+		remove(nazwypionkow[posinchess[0]][posinchess[1]]);
+		nazwypionkow[posinchess[0]][posinchess[1]]=null;
+		gameboard[posinchess[0]][posinchess[1]]=null;
+	}
+}
+
+function postaw(fig,pozchess) {
+	zdejmij(pozchess);
+	var ournazwapola = nazwapola(pozchess);
+	console.log(ournazwapola);
+	pionek(fig.color,fig.figtype,ournazwapola,pozchess);
+	nazwypionkow[pozchess[0]][pozchess[1]]=ournazwapola;
+	gameboard[pozchess[0]][pozchess[1]]=fig;
+}
+
 /*** KONIEC PIONKOW ***/
 
 /*** Adres obrazków pionków **/
