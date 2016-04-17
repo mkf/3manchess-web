@@ -27,6 +27,7 @@ var color_rotation = 1; 	//color który jest na dole zwrócony w stronę usera /
 
 var pionekIsCliked = false; //czy pionek został klinięty
 var pionekClikedName; //nazwa pionka podświetlonego
+var pionekClickedPoz;
 
 var pionek_width = 60; //wymiary pionkow
 var pionek_height = 60;
@@ -166,6 +167,8 @@ function drawField(a, b){  	//drawField(file, rank)
 					height: pionek_height
 				});
 				animujPionek(pozycjasrodka([a,b]));
+				//klie.turn(gameID,fromtoprom([a,b],zapytanie),parseInt($("#playerid").val()),authkey,function() {
+				//});
 			}
 		}
 	});
@@ -306,6 +309,7 @@ function pionek(color, figtype, nazwa, poschess){
 			.drawLayers();
 			pionekIsCliked = true;
 			pionekClikedName = layer.name;
+			pionekClickedPoz = poz;
 		}
 	});
 }
