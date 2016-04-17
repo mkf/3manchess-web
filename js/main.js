@@ -26,7 +26,6 @@ var gamestate;
 
 var klie = new Client("http://platinum.edu.pl:8082/");
 
-$("#game_form").submit(gameformsubmit);
 
 var gameformsubmit = function() {
 	gameID=parseInt($("#gameid_input").val());
@@ -49,6 +48,8 @@ var gameformsubmit = function() {
 	});
 	return false;
 };
+
+$("#game_form").submit(gameformsubmit);
 
 $("#loginform").submit(function() {
 	var loginu=$("#logininput").val();
