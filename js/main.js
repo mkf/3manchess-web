@@ -20,7 +20,7 @@ var JSONlikeNEWGAME = new State(
 var gameID = -1;
 var loginu="";
 var passwordu="";
-var authdat;
+var authkey;
 var gameplaydata;
 var gamestate;
 
@@ -57,7 +57,9 @@ $("#loginform").submit(function() {
 	console.log(klie);
 	klie.login(loginu,passwdu,function(data) {
 		console.log(data);
-		authdat=data;
+		authkey = data.authkey;
+		$("#userid").val(data.id);
+		//getting playerid
 	});
 	return false;
 });
