@@ -228,7 +228,9 @@ var Client = function (baseUrl) {
 			},
 			success: function (data) {
 				console.log(data);
-				callback(data, callbackParameters);
+				var statefromdata = new State(data);
+				console.log(statefromdata);
+				callback(statefromdata, callbackParameters);
 			},
 			error: function (err) {
 				console.log(err);
