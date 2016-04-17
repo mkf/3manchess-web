@@ -42,6 +42,19 @@ function nazwapola(chesspos) {
 	return "pos"+chesspos[0]+"a"+chesspos[1]+"";
 }
 
+var wedlugnazw = gentablicanazw();
+
+function gentablicanazw() {
+	var tocozwracamy = {};
+	var naszpos = [0,0];
+	for (naszpos[0]=0;naszpos[0]<6;naszpos[0]++) {
+		for (naszpos[1]=0;naszpos[1]<24;naszpos[1]++) {
+			tocozwracamy[nazwapola(naszpos)]=naszpos;
+		}
+	}
+	return tocozwracamy;
+}
+
 function cleanboard() {
 	var clearboard = [];
 	var clearrow = [];
