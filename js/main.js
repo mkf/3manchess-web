@@ -29,7 +29,7 @@ var klie = new Client("http://platinum.edu.pl:8082/");
 $("#game_form").submit(gameformsubmit);
 
 var gameformsubmit = function() {
-	gameID=$("#gameid_input").val();
+	gameID=parseInt($("#gameid_input").val());
 	console.log("gameid_input gave ",gameID);
 	klie.play(gameID,function(data) {
 		console.log(data);
@@ -65,9 +65,9 @@ $("#loginform").submit(function() {
 });
 
 $("#newgameform").submit(function() {
-	var whiteu=$("#whitenew").val();
-	var grayu=$("#graynew").val();
-	var blacku=$("#blacknew").val();
+	var whiteu=parseInt($("#whitenew").val());
+	var grayu=parseInt($("#graynew").val());
+	var blacku=parseInt($("#blacknew").val());
 	console.log(whiteu,grayu,blacku);
 	klie.addGame(JSONlikeNEWGAME,whiteu,grayu,blacku,function(data) {
 		console.log(data);
