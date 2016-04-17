@@ -3,7 +3,7 @@ var Client = function (baseUrl) {
 
 	this.addGame = function (state, white, gray, black, callback, callbackParameters) {
 		state.prepareForSending();
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/addgame",
 			type: "POST",
 			dataType: "application/json",
@@ -18,6 +18,8 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.after = function (gameid, white, gray, black, callback, callbackParameters) {
@@ -44,7 +46,7 @@ var Client = function (baseUrl) {
 			return "";
 		}
 
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid + "/after" + queraft(white, gray, black),
 			type: "GET",
 			dataType: "application/json",
@@ -58,11 +60,13 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 
 	this.before = function (gameid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid + "/after",
 			type: "GET",
 			dataType: "application/json",
@@ -76,10 +80,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.botInfo = function (botid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/bot/" + botid,
 			type: "GET",
 			dataType: "application/json",
@@ -93,10 +99,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.userInfo = function (userid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/user/" + userid,
 			type: "GET",
 			dataType: "application/json",
@@ -110,10 +118,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.whoIsIt = function (playerid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/player/" + playerid,
 			type: "GET",
 			dataType: "application/json",
@@ -127,10 +137,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.botKey = function (botid, userid, userauth, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/botkey",
 			type: "POST",
 			dataType: "application/json",
@@ -145,10 +157,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.login = function (login, passwd, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/login",
 			type: "POST",
 			dataType: "application/json",
@@ -163,10 +177,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.move = function (moveid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/move/" + moveid,
 			type: "GET",
 			dataType: "application/json",
@@ -180,10 +196,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.play = function (gameid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid,
 			type: "GET",
 			dataType: "application/json",
@@ -197,10 +215,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.state = function (stateid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/state/" + stateid,
 			type: "GET",
 			dataType: "application/json",
@@ -214,10 +234,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.vftpgen = function (stateid, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/state/" + stateid + "/vftpgen",
 			type: "GET",
 			dataType: "application/json",
@@ -231,10 +253,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.diff = function(moveid,callback,callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/move/"+moveid+"/diff",
 			type:"GET",
 			dataType:"application/json",
@@ -248,10 +272,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.newBot = function (whoami, owner, userauth, ownname, settings, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/newbot",
 			type: "POST",
 			dataType: "application/json",
@@ -271,10 +297,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.ownersBots = function (owner, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/user/" + owner + "/bots",
 			type: "GET",
 			dataType: "application/json",
@@ -288,10 +316,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.signup = function (login, passwd, name, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/signup",
 			type: "POST",
 			dataType: "application/json",
@@ -306,10 +336,12 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 
 	this.turn = function (gameid, fromtoprom, playerid, authkey, callback, callbackParameters) {
-		jQuery.ajax({
+		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid,
 			type: "POST",
 			dataType: "application/json",
@@ -324,5 +356,7 @@ var Client = function (baseUrl) {
 				console.log(err);
 			}
 		});
+		console.log(ourqueryis);
+		jQuery.ajax(ourqueryis);
 	};
 };
