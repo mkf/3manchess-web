@@ -6,7 +6,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/addgame",
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({state: state, whiteplayer: white, grayplayer: gray, blackplayer: black}),
 			complete: function () {
 			},
@@ -49,7 +49,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid + "/after" + queraft(white, gray, black),
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -69,7 +69,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid + "/after",
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -88,7 +88,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/bot/" + botid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -107,7 +107,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/user/" + userid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -126,7 +126,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/player/" + playerid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -145,7 +145,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/botkey",
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({botid: botid, userauth: {id: userid, authkey: userauth}}),
 			complete: function () {
 			},
@@ -165,7 +165,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/login",
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({"login": login, "passwd": passwd}),
 			complete: function () {
 			},
@@ -185,7 +185,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/move/" + moveid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -204,7 +204,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -223,7 +223,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/state/" + stateid,
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -242,7 +242,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/state/" + stateid + "/vftpgen",
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -261,7 +261,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/move/"+moveid+"/diff",
 			type:"GET",
-			dataType:"application/json",
+			dataType: "json",
 			complete: function() {
 			},
 			success: function (data) {
@@ -280,7 +280,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/newbot",
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({
 				whoami: btoa(whoami),
 				owner: {id: owner, authkey: userauth},
@@ -305,7 +305,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/user/" + owner + "/bots",
 			type: "GET",
-			dataType: "application/json",
+			dataType: "json",
 			complete: function () {
 			},
 			success: function (data) {
@@ -324,7 +324,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/signup",
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({login: login, passwd: passwd, name: name}),
 			complete: function () {
 			},
@@ -344,7 +344,7 @@ var Client = function (baseUrl) {
 		ourqueryis = ({
 			url: this.baseURL + "api/play/" + gameid,
 			type: "POST",
-			dataType: "application/json",
+			dataType: "json",
 			data: JSON.stringify({fromtoprom: fromtoprom, whoplayer: {id: playerid, authkey: authkey}}),
 			complete: function () {
 			},
