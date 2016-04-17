@@ -100,9 +100,10 @@ function initPawns(){
 		document.getElementById("row").innerHTML = boardpos[0];
 	});
 	drawFields();
-	pionek(1,1,"p1",[0,0]);
-	pionek(3,3,"p2",[4,10]);
-	pionek(2,2,"p3",[5,20]);
+	//demo figures below somehow interfered with chessboard
+	//pionek(1,1,"p1",[0,0]);
+	//pionek(3,3,"p2",[4,10]);
+	//pionek(2,2,"p3",[5,20]);
 }
 
 
