@@ -61,6 +61,10 @@ $("#loginform").submit(function() {
 		authkey = data.authkey;
 		$("#userid").val(data.id);
 		//getting playerid
+		klie.userInfo(parseInt($("#userid").val()),function(pdata) {
+			console.log(pdata);
+			$("#playerid").val(pdata.playerid);
+		});
 	});
 	return false;
 });
