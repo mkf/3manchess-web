@@ -160,9 +160,9 @@ function drawField(a, b){  	//drawField(file, rank)
 			radius: r_2
 		},
 		click: function(layer){
-			if(pionekIsClicked){					//typo : Cli_c_ked
-				pionekIsClicked = false;				//typo : Cli_c_ked
-				$('#pawns').setLayer(pionekClickedName,{		//typo : Cli_c_ked
+			if(pionekIsClicked){
+				pionekIsClicked = false;
+				$('#pawns').setLayer(pionekClickedName,{
 					width: pionek_width,
 					height: pionek_height
 				});
