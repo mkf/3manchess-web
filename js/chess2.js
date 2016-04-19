@@ -292,6 +292,9 @@ function pionek(color, figtype, nazwa, poschess){
 	$('#pawns').drawImage({
 		layer: true,
 		name: nazwa, 
+		data: {
+			szachpos: poz
+		},
 		source: pionekurl(color, figtype),
 		x: poz[0], y: poz[1],
 		width: pionek_width,
@@ -310,7 +313,7 @@ function pionek(color, figtype, nazwa, poschess){
 			.drawLayers();
 			pionekIsClicked = true;
 			pionekClickedName = layer.name;
-			pionekClickedPoz = poz;
+			pionekClickedPoz = layer.data.szachpos;
 		}
 	});
 }
