@@ -298,7 +298,7 @@ function pionek(color, figtype, nazwa, poschess){
 		layer: true,
 		name: nazwa, 
 		data: {
-			szachpos: poschess
+			szachpos: [poschess[0],poschess[1]]
 		},
 		source: pionekurl(color, figtype),
 		x: poz[0], y: poz[1],
