@@ -36,6 +36,8 @@ var pionek_height_light = 40;
 
 var gameboard = cleanboard();
 var nazwypionkow = cleanboard();
+console.log(cleanboard());
+var nowyoucan = true;
 
 /******************************/
 
@@ -43,14 +45,30 @@ function nazwapola(chesspos) {
 	return "pos"+chesspos[0]+"a"+chesspos[1]+"";
 }
 
+console.log(nazwapola([0,0]));
+console.log(nazwapola([5,23]));
+
 var wedlugnazw = gentablicanazw();
+console.log(wedlugnazw);
+
+var tojesttestiterarr = [0,0];
+
+for (tojesttestiterarr[0]=0;tojesttestiterarr[0]<6;tojesttestiterarr[0]++) {
+	for (tojesttestiterarr[1]=0;tojesttestiterarr[1]<24;tojesttestiterarr[1]++) {
+		console.log(tojesttestiterarr);
+	}
+}
 
 function gentablicanazw() {
 	var tocozwracamy = {};
-	var naszpos = [0,0];
-	for (naszpos[0]=0;naszpos[0]<6;naszpos[0]++) {
-		for (naszpos[1]=0;naszpos[1]<24;naszpos[1]++) {
-			tocozwracamy[nazwapola(naszpos)]=naszpos;
+	var naszateraznazwapola;
+	var naszpos;
+	for (i=0;i<6;i++) {
+		for (j=0;j<24;j++) {
+			naszpos = [i,j];
+			naszateraznazwapola = nazwapola(naszpos);
+			console.log(naszateraznazwapola,naszpos);
+			tocozwracamy[naszateraznazwapola]=naszpos;
 		}
 	}
 	return tocozwracamy;
@@ -342,11 +360,15 @@ function przesunPionek(x, y, nazwa){
 function remove(nazwa){
 	$('#pawns').removeLayer(nazwa)
 		.drawLayers();
+	console.log(nazwa);
 }
 
 function zdejmij(posinchess){
 	if (nazwypionkow[posinchess[0]][posinchess[1]]!==null) { //jeżeli coś tam jest
-		remove(nazwypionkow[posinchess[0]][posinchess[1]]); //usuń warstwę tego pionka
+		console.log("zdejmijkitchen",posinchess);
+		var nazwategotupionka = nazwypionkow[posinchess[0]][posinchess[1]];
+		console.log("zdejmijkitchen",nazwategotupionka);
+		remove(nazwategotupionka); //usuń warstwę tego pionka
 		nazwypionkow[posinchess[0]][posinchess[1]]=null; //wyzerowanie elementu tablicy, żeby było że usunięty
 		gameboard[posinchess[0]][posinchess[1]]=null; //wyzerowanie pionka na tablicy do diffów (przyszłość)
 	}
@@ -355,7 +377,7 @@ function zdejmij(posinchess){
 function postaw(fig,pozchess) {
 	zdejmij(pozchess);  //zdejmij pionka jeżeli już jest
 	var ournazwapola = nazwapola(pozchess);
-	console.log(ournazwapola);
+	console.log("stawiamynazywamy",pozchess,ournazwapola);
 	pionek(fig.color,fig.figtype,ournazwapola,pozchess);
 	nazwypionkow[pozchess[0]][pozchess[1]]=ournazwapola;
 	gameboard[pozchess[0]][pozchess[1]]=fig;
