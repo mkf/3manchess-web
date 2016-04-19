@@ -24,8 +24,6 @@ var authkey;
 var gameplaydata;
 var gamestate;
 
-var klie = new Client("http://platinum.edu.pl:8082/");
-
 var ustawobecny = function() {
 	var pozycja = [0,0];
 	for (pozycja[0]=0;pozycja[0]<6;pozycja[0]++) {

@@ -362,3 +362,5 @@ var Client = function (baseUrl) {
 		jQuery.ajax(ourqueryis);
 	};
 };
+
+var klie = new Client("http://platinum.edu.pl:8082/");
