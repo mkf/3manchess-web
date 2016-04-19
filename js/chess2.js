@@ -347,14 +347,14 @@ function przesunPionek(x, y, nazwa){
 function remove(nazwa){
 	$('#pawns').removeLayer(nazwa)
 		.drawLayers();
-	console.log(nazwa);
+	//console.log(nazwa);
 }
 
 function zdejmij(posinchess){
 	if (nazwypionkow[posinchess[0]][posinchess[1]]!==null) { //jeżeli coś tam jest
-		console.log("zdejmijkitchen",posinchess);
+		//console.log("zdejmijkitchen",posinchess);
 		var nazwategotupionka = nazwypionkow[posinchess[0]][posinchess[1]];
-		console.log("zdejmijkitchen",nazwategotupionka);
+		//console.log("zdejmijkitchen",nazwategotupionka);
 		remove(nazwategotupionka); //usuń warstwę tego pionka
 		nazwypionkow[posinchess[0]][posinchess[1]]=null; //wyzerowanie elementu tablicy, żeby było że usunięty
 		gameboard[posinchess[0]][posinchess[1]]=null; //wyzerowanie pionka na tablicy do diffów (przyszłość)
@@ -364,11 +364,11 @@ function zdejmij(posinchess){
 function postaw(fig,pozchess) {
 	zdejmij(pozchess);  //zdejmij pionka jeżeli już jest
 	var ournazwapola = nazwapola(pozchess);
-	console.log("stawiamynazywamy",pozchess,ournazwapola);
+	//console.log("stawiamynazywamy",pozchess,ournazwapola);
 	pionek(fig.color,fig.figtype,ournazwapola,pozchess);
-	console.log("postaw::ournazwapola",pozchess,ournazwapola);
+	//console.log("postaw::ournazwapola",pozchess,ournazwapola);
 	nazwypionkow[pozchess[0]][pozchess[1]]=ournazwapola;
-	console.log("cosiezapisalo",nazwypionkow[pozchess[0]][pozchess[1]],JSON.stringify(nazwypionkow));
+	//console.log("cosiezapisalo",nazwypionkow[pozchess[0]][pozchess[1]],JSON.stringify(nazwypionkow));
 	gameboard[pozchess[0]][pozchess[1]]=fig;
 }
 
