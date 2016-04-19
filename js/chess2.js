@@ -51,14 +51,6 @@ console.log(nazwapola([5,23]));
 var wedlugnazw = gentablicanazw();
 console.log(wedlugnazw);
 
-var tojesttestiterarr = [0,0];
-
-for (tojesttestiterarr[0]=0;tojesttestiterarr[0]<6;tojesttestiterarr[0]++) {
-	for (tojesttestiterarr[1]=0;tojesttestiterarr[1]<24;tojesttestiterarr[1]++) {
-		console.log(tojesttestiterarr);
-	}
-}
-
 function gentablicanazw() {
 	var tocozwracamy = {};
 	var naszateraznazwapola;
@@ -67,7 +59,6 @@ function gentablicanazw() {
 		for (j=0;j<24;j++) {
 			naszpos = [i,j];
 			naszateraznazwapola = nazwapola(naszpos);
-			console.log(naszateraznazwapola,naszpos);
 			tocozwracamy[naszateraznazwapola]=naszpos;
 		}
 	}
