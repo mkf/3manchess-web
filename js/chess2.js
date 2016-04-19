@@ -27,7 +27,7 @@ var color_rotation = 1; 	//color który jest na dole zwrócony w stronę usera /
 
 var pionekIsClicked = false; //czy pionek został klinięty
 var pionekClickedName; //nazwa pionka podświetlonego
-var pionekClickedPoz;
+var pionekClickedChessPoz;
 
 var pionek_width = 60; //wymiary pionkow
 var pionek_height = 60;
@@ -172,7 +172,7 @@ function drawField(a, b){  	//drawField(file, rank)
 					height: pionek_height
 				});
 				animujPionek(pozycjasrodka([a,b]));
-				klie.turn(gameID,{"fromto":[pionekClickedPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
+				klie.turn(gameID,{"fromto":[pionekClickedChessPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
 					console.log(turdata);
 				});
 			}
@@ -298,7 +298,7 @@ function pionek(color, figtype, nazwa, poschess){
 		layer: true,
 		name: nazwa, 
 		data: {
-			szachpos: poz
+			szachpos: poschess
 		},
 		source: pionekurl(color, figtype),
 		x: poz[0], y: poz[1],
@@ -318,7 +318,7 @@ function pionek(color, figtype, nazwa, poschess){
 			.drawLayers();
 			pionekIsClicked = true;
 			pionekClickedName = layer.name;
-			pionekClickedPoz = layer.data.szachpos;
+			pionekClickedChessPoz = layer.data.szachpos;
 		}
 	});
 }
