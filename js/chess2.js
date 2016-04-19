@@ -379,7 +379,9 @@ function postaw(fig,pozchess) {
 	var ournazwapola = nazwapola(pozchess);
 	console.log("stawiamynazywamy",pozchess,ournazwapola);
 	pionek(fig.color,fig.figtype,ournazwapola,pozchess);
+	console.log("postaw::ournazwapola",pozchess,ournazwapola);
 	nazwypionkow[pozchess[0]][pozchess[1]]=ournazwapola;
+	console.log("cosiezapisalo",nazwypionkow[pozchess[0]][pozchess[1]],JSON.stringify(nazwypionkow));
 	gameboard[pozchess[0]][pozchess[1]]=fig;
 }
 
