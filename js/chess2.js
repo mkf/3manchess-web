@@ -66,13 +66,9 @@ function gentablicanazw() {
 }
 
 function cleanboard() {
-	var clearboard = [];
-	var clearrow = [];
-	for (var i=0;i<24;i++) {
-		clearrow.push(null);
-	}
+	var clearboard = new Array(6);
 	for (var i=0;i<6;i++) {
-		clearboard.push(clearrow);
+		clearboard[i] = new Array(24);
 	}
 	return clearboard;
 }
