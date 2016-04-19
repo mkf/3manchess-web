@@ -174,6 +174,7 @@ function drawField(a, b){  	//drawField(file, rank)
 				animujPionek(pozycjasrodka([a,b]));
 				klie.turn(gameID,{"fromto":[pionekClickedChessPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
 					console.log(turdata);
+					$("#gameid_input").val(turdata.after);
 				});
 			}
 		}
