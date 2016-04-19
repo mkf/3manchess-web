@@ -17,10 +17,8 @@ var JSONlikeNEWGAME = new State(
 			"alivecolors":[true,true,true]
 		});
 
-var gameID = -1;
 var loginu="";
 var passwordu="";
-var authkey;
 var gameplaydata;
 var gamestate;
 

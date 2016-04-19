@@ -1,3 +1,6 @@
+var gameID = -1;
+var authkey;
+
 var Client = function (baseUrl) {
 	this.baseURL = String(baseUrl);
 

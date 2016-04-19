@@ -167,8 +167,9 @@ function drawField(a, b){  	//drawField(file, rank)
 					height: pionek_height
 				});
 				animujPionek(pozycjasrodka([a,b]));
-				//klie.turn(gameID,fromtoprom([a,b],zapytanie),parseInt($("#playerid").val()),authkey,function() {
-				//});
+				klie.turn(gameID,{"fromto":[pionekClickedPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
+					console.log(turdata);
+				});
 			}
 		}
 	});
