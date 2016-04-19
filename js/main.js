@@ -26,10 +26,10 @@ var ustawobecny = function() {
 	var pozycja = [0,0];
 	for (pozycja[0]=0;pozycja[0]<6;pozycja[0]++) {
 		for (pozycja[1]=0;pozycja[1]<24;pozycja[1]++) {
-			if (!(gamestate.board[pozycja[0]][pozycja[1]].empty())) {
-				postaw(gamestate.board[pozycja[0]][pozycja[1]],pozycja);
-			} else {
-				zdejmij(pozycja);
+			if (!(gamestate.board[pozycja[0]][pozycja[1]].empty())) {  //jeżeli jest w grze na tym polu
+				postaw(gamestate.board[pozycja[0]][pozycja[1]],pozycja); //postaw tego pionka na planszy
+			} else {  //jeżeli niczego nie ma być na tym polu
+				zdejmij(pozycja); //wyczyść to pole, jeżeli coś na nim jest
 			}
 		}
 	}

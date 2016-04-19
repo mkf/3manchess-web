@@ -342,15 +342,15 @@ function remove(nazwa){
 }
 
 function zdejmij(posinchess){
-	if (nazwypionkow[posinchess[0]][posinchess[1]]!==null) {
-		remove(nazwypionkow[posinchess[0]][posinchess[1]]);
-		nazwypionkow[posinchess[0]][posinchess[1]]=null;
-		gameboard[posinchess[0]][posinchess[1]]=null;
+	if (nazwypionkow[posinchess[0]][posinchess[1]]!==null) { //jeżeli coś tam jest
+		remove(nazwypionkow[posinchess[0]][posinchess[1]]); //usuń warstwę tego pionka
+		nazwypionkow[posinchess[0]][posinchess[1]]=null; //wyzerowanie elementu tablicy, żeby było że usunięty
+		gameboard[posinchess[0]][posinchess[1]]=null; //wyzerowanie pionka na tablicy do diffów (przyszłość)
 	}
 }
 
 function postaw(fig,pozchess) {
-	zdejmij(pozchess);
+	zdejmij(pozchess);  //zdejmij pionka jeżeli już jest
 	var ournazwapola = nazwapola(pozchess);
 	console.log(ournazwapola);
 	pionek(fig.color,fig.figtype,ournazwapola,pozchess);
