@@ -52,6 +52,10 @@ var gameformsubmit = function() {
 			//info kto rusza następny i kto żyje
 			ustawobecny(); //funkcja od boarda
 		});
+		klie.vftpgen(data.stateid,function(vftpdat) {
+			console.log(vftpdat);
+			vftplist = vftpdat;
+		});
 	});
 	return false;
 };

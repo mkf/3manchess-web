@@ -1,6 +1,7 @@
 var gameID = -1;
 var gameplaydata;
 var authkey;
+var vftplist;
 
 var Client = function (baseUrl) {
 	this.baseURL = String(baseUrl);
