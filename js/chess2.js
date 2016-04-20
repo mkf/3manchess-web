@@ -36,10 +36,36 @@ var pionek_height_light = 40;
 
 var gameboard = cleanboard();
 var nazwypionkow = cleanboard();
+var vftparr = cleanarrboard();
 console.log(cleanboard());
 var nowyoucan = true;
 
 /******************************/
+
+var ladujvftp = function () {
+	var naszapo = [0,0];
+	for (naszapo[0]=0;naszapo[0]<6;naszapo[0]++) {
+		for (naszapo[1]=0;naszapo[1]<24;naszapo[1]++) {
+			for (var ii=0;ii<vftplist.fromtoproms.length;ii++) {
+				if vftplist.fromtoproms[ii].fromto[0]==naszapo {
+					vftparr[naszapo[0]][naszapo[1]].push({to: vftplist.fromtoproms[ii].fromto[1], prom: vftplist.fromtoproms[ii].pawnpromotion});
+				}
+			}
+		}
+	}
+};
+
+var czypytacprom = function (ofromto) {
+	var vfarrlent = vftparr[ofromto[0][0]][ofromto[0][1]].length;
+	var vfarrpromlist = [];
+	for (var ii=0;ii<vfarrlent;ii++) {
+		var vftarrpromcur = vftparr[ofromto[0][0]][ofromto[0][1]][ii].prom;
+		if (vftarrpromcur>0) {
+			vfarrpromlist.push(vftarrpromcur);
+		}
+	}
+	return vfarrpromlist;
+}
 
 function nazwapola(chesspos) {
 	return "pos"+chesspos[0]+"a"+chesspos[1]+"";
@@ -69,6 +95,17 @@ function cleanboard() {
 	var clearboard = new Array(6);
 	for (var i=0;i<6;i++) {
 		clearboard[i] = new Array(24);
+	}
+	return clearboard;
+}
+
+function cleanarrboard() {
+	var clearboard = new Array(6);
+	for (var i=0;i<6;i++) {
+		clearboard[i] = new Array(24);
+		for (var iii=0;iii<24;iii++) {
+			clearboard[i][iii]=[];
+		}
 	}
 	return clearboard;
 }
