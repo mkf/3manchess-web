@@ -46,9 +46,13 @@ var ladujvftp = function () {
 	var naszapo = [0,0];
 	for (naszapo[0]=0;naszapo[0]<6;naszapo[0]++) {
 		for (naszapo[1]=0;naszapo[1]<24;naszapo[1]++) {
-			for (var ii=0;ii<vftplist.fromtoproms.length;ii++) {
+			var vftpourlenftp = vftplist.fromtoproms.length;
+			for (var ii=0;ii<vftpourlenftp;ii++) {
 				if (vftplist.fromtoproms[ii].fromto[0]==naszapo) {
-					vftparr[naszapo[0]][naszapo[1]].push({to: vftplist.fromtoproms[ii].fromto[1], prom: vftplist.fromtoproms[ii].pawnpromotion});
+					vftparr[naszapo[0]][naszapo[1]].push({
+						to: vftplist.fromtoproms[ii].fromto[1], 
+						prom: vftplist.fromtoproms[ii].pawnpromotion
+					});
 				}
 			}
 		}
