@@ -47,7 +47,7 @@ var ladujvftp = function () {
 	for (naszapo[0]=0;naszapo[0]<6;naszapo[0]++) {
 		for (naszapo[1]=0;naszapo[1]<24;naszapo[1]++) {
 			for (var ii=0;ii<vftplist.fromtoproms.length;ii++) {
-				if vftplist.fromtoproms[ii].fromto[0]==naszapo {
+				if (vftplist.fromtoproms[ii].fromto[0]==naszapo) {
 					vftparr[naszapo[0]][naszapo[1]].push({to: vftplist.fromtoproms[ii].fromto[1], prom: vftplist.fromtoproms[ii].pawnpromotion});
 				}
 			}
@@ -204,6 +204,7 @@ function drawField(a, b){  	//drawField(file, rank)
 		click: function(layer){
 			if(pionekIsClicked){
 				pionekIsClicked = false;
+				standardColor();
 				$('#pawns').setLayer(pionekClickedName,{
 					width: pionek_width,
 					height: pionek_height
@@ -211,7 +212,7 @@ function drawField(a, b){  	//drawField(file, rank)
 				var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]);
 				var czypytourlennn = czypytour.length;
 				var naszpromotionpokico = 0;
-				if czypytourlennn>0 {
+				if (czypytourlennn>0) {
 					naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour));
 				}
 				klie.turn(
@@ -373,6 +374,12 @@ function pionek(color, figtype, nazwa, poschess){
 			pionekIsClicked = true;
 			pionekClickedName = layer.name;
 			pionekClickedChessPoz = layer.data.szachpos;
+			var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght;
+			for (var iii=0;iii<naszlenvftpu;iii++) {
+				var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
+				changeColor(curpossss[0],curpossss[1]);
+			}
+			draw();
 		}
 	});
 }
