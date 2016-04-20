@@ -1,4 +1,5 @@
 var gameID = -1;
+var gameplaydata;
 var authkey;
 
 var Client = function (baseUrl) {

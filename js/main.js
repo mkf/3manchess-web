@@ -19,7 +19,6 @@ var JSONlikeNEWGAME = new State(
 
 var loginu="";
 var passwordu="";
-var gameplaydata;
 var gamestate;
 
 var ustawobecny = function() {
