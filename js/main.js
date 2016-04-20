@@ -55,6 +55,7 @@ var gameformsubmit = function() {
 		klie.vftpgen(data.stateid,function(vftpdat) {
 			console.log(vftpdat);
 			vftplist = vftpdat;
+			ladujvftp();
 		});
 	});
 	return false;

@@ -208,10 +208,25 @@ function drawField(a, b){  	//drawField(file, rank)
 					width: pionek_width,
 					height: pionek_height
 				});
-				klie.turn(gameID,{"fromto":[pionekClickedChessPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
-					console.log(turdata);
-					$("#gameid_input").val(turdata.after);
-				});
+				var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]);
+				var czypytourlennn = czypytour.length;
+				var naszpromotionpokico = 0;
+				if czypytourlennn>0 {
+					naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour));
+				}
+				klie.turn(
+						gameID,
+						{
+							"fromto":[pionekClickedChessPoz,[a,b]],
+							"pawnpromotion":naszpromotionpokico
+						},
+						parseInt($("#playerid").val()),
+						authkey,
+						function(turdata) {
+							console.log(turdata);
+							$("#gameid_input").val(turdata.after);
+						}
+					 );
 				animujPionek(pozycjasrodka([a,b]));
 				//gameformsubmit();
 			}
