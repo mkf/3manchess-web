@@ -171,11 +171,12 @@ function drawField(a, b){  	//drawField(file, rank)
 					width: pionek_width,
 					height: pionek_height
 				});
-				animujPionek(pozycjasrodka([a,b]));
 				klie.turn(gameID,{"fromto":[pionekClickedChessPoz,[a,b]],"pawnpromotion":0},parseInt($("#playerid").val()),authkey,function(turdata) {
 					console.log(turdata);
 					$("#gameid_input").val(turdata.after);
 				});
+				animujPionek(pozycjasrodka([a,b]));
+				//gameformsubmit();
 			}
 		}
 	});
