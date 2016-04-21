@@ -178,6 +178,43 @@ function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
 	standardColor();  //kolorowanie na standardowe, ciemny i jasny, kolory szachownicy 
 }
 
+var endturnfunction = function(a,b) {
+	var endturnfuncreturn = function(layer){
+		if(pionekIsClicked){ //jeżeli jest kliknięty pionek
+			pionekIsClicked = false; //odkliknij go
+			standardColor(); //wyzeruj kolorowanie
+			$('#pawns').setLayer(pionekClickedName,{
+				width: pionek_width, //przywróć normalne wymiary pionka
+				height: pionek_height
+			});
+			var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]); //zbierz możliwe promocje
+			var czypytourlennn = czypytour.length;
+			var naszpromotionpokico = 0; //jeżeli nie ma możliwej promocji, promocja jest 0
+			if (czypytourlennn>0) { //jeżeli są możliwe promocje
+				naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour)); //pytaj o promocję
+			}
+			klie.turn(  //wykonaj ruch
+					gameID, //na gameplayu o id
+					{
+						"fromto":[pionekClickedChessPoz,[a,b]],
+						//z pozycji klikniętego pionka do pozycji tego pola
+						"pawnpromotion":naszpromotionpokico //z promocją na
+					},
+					parseInt($("#playerid").val()),  //jako gracz o playerid pobranym z disabled input
+					authkey, //klucz API
+					function(turdata) { //jak już będzie id ruchu i after
+						console.log(turdata);
+						$("#gameid_input").val(turdata.after);  //wstawić to do input disabled
+					}
+				 );
+			//animujPionek(pozycjasrodka([a,b])); //zbędna animacja, w sumie nie wiem czy tego nie wywalić bo mylące przesunięcie
+			//animację możnaby włączyć, jeśli byłby wzywany gameformsubmit()
+			//gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
+		}
+	};
+	return endturnfuncreturn;
+}
+
 function drawField(a, b){  	//drawField(file, rank)
 	var ang_start = 8*15+15*b; // zaczynamy od 120°, potem jedziemy co 15° (jeden file)
 	var ang_stop = ang_start+15; // rysujemy jeden file-łuk, czyli 15°
@@ -205,39 +242,7 @@ function drawField(a, b){  	//drawField(file, rank)
 			start: ang_stop, end: ang_start,
 			radius: r_2
 		},
-		click: function(layer){
-			if(pionekIsClicked){ //jeżeli jest kliknięty pionek
-				pionekIsClicked = false; //odkliknij go
-				standardColor(); //wyzeruj kolorowanie
-				$('#pawns').setLayer(pionekClickedName,{
-					width: pionek_width, //przywróć normalne wymiary pionka
-					height: pionek_height
-				});
-				var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]); //zbierz możliwe promocje
-				var czypytourlennn = czypytour.length;
-				var naszpromotionpokico = 0; //jeżeli nie ma możliwej promocji, promocja jest 0
-				if (czypytourlennn>0) { //jeżeli są możliwe promocje
-					naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour)); //pytaj o promocję
-				}
-				klie.turn(  //wykonaj ruch
-						gameID, //na gameplayu o id
-						{
-							"fromto":[pionekClickedChessPoz,[a,b]],
-								//z pozycji klikniętego pionka do pozycji tego pola
-							"pawnpromotion":naszpromotionpokico //z promocją na
-						},
-						parseInt($("#playerid").val()),  //jako gracz o playerid pobranym z disabled input
-						authkey, //klucz API
-						function(turdata) { //jak już będzie id ruchu i after
-							console.log(turdata);
-							$("#gameid_input").val(turdata.after);  //wstawić to do input disabled
-						}
-					 );
-				//animujPionek(pozycjasrodka([a,b])); //zbędna animacja, w sumie nie wiem czy tego nie wywalić bo mylące przesunięcie
-					//animację możnaby włączyć, jeśli byłby wzywany gameformsubmit()
-				//gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
-			}
-		}
+		click: endturnfunction(a,b)
 	});
 }
 
