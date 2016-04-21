@@ -206,33 +206,35 @@ function drawField(a, b){  	//drawField(file, rank)
 			radius: r_2
 		},
 		click: function(layer){
-			if(pionekIsClicked){
-				pionekIsClicked = false;
-				standardColor();
+			if(pionekIsClicked){ //jeżeli jest kliknięty pionek
+				pionekIsClicked = false; //odkliknij go
+				standardColor(); //wyzeruj kolorowanie
 				$('#pawns').setLayer(pionekClickedName,{
-					width: pionek_width,
+					width: pionek_width, //przywróć normalne wymiary pionka
 					height: pionek_height
 				});
-				var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]);
+				var czypytour = czypytacprom([pionekClickedChessPoz,[a,b]]); //zbierz możliwe promocje
 				var czypytourlennn = czypytour.length;
-				var naszpromotionpokico = 0;
-				if (czypytourlennn>0) {
-					naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour));
+				var naszpromotionpokico = 0; //jeżeli nie ma możliwej promocji, promocja jest 0
+				if (czypytourlennn>0) { //jeżeli są możliwe promocje
+					naszpromotionpokico = parseInt(prompt("Promotion: "+czypytour)); //pytaj o promocję
 				}
-				klie.turn(
-						gameID,
+				klie.turn(  //wykonaj ruch
+						gameID, //na gameplayu o id
 						{
 							"fromto":[pionekClickedChessPoz,[a,b]],
-							"pawnpromotion":naszpromotionpokico
+								//z pozycji klikniętego pionka do pozycji tego pola
+							"pawnpromotion":naszpromotionpokico //z promocją na
 						},
-						parseInt($("#playerid").val()),
-						authkey,
-						function(turdata) {
+						parseInt($("#playerid").val()),  //jako gracz o playerid pobranym z disabled input
+						authkey, //klucz API
+						function(turdata) { //jak już będzie id ruchu i after
 							console.log(turdata);
-							$("#gameid_input").val(turdata.after);
+							$("#gameid_input").val(turdata.after);  //wstawić to do input disabled
 						}
 					 );
-				animujPionek(pozycjasrodka([a,b]));
+				//animujPionek(pozycjasrodka([a,b])); //zbędna animacja, w sumie nie wiem czy tego nie wywalić bo mylące przesunięcie
+					//animację możnaby włączyć, jeśli byłby wzywany gameformsubmit()
 				//gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
 			}
 		}
