@@ -371,25 +371,32 @@ function pionek(color, figtype, nazwa, poschess){
 		width: pionek_width,
 		height: pionek_height,
 		click: function(layer){  //jeżeli pionek kliknięty
-			if(pionekIsClicked){ //jeżeli jest już jakiś kliknięty pionek
-				$(this).setLayer(pionekClickedName,{
-					width: pionek_width, //przywróć tamtemu klikniętemu pionkowi standardowy rozmiar
-					height: pionek_height
+			if(pionekIsClicked) {
+				if (Tools.arePosEqual(layer.data.szachpos,pionekClickedChessPoz)){ //jeżeli ten pionek jest już kliknięty
+					$(this).setLayer(layer,{
+						width: pionek_width, //przywróć temu pionkowi standardowy rozmiar
+						height: pionek_height
+					});
+					pionekIsClicked=false;
+				} else {
+					var whatarewecallingnow = endturnfunction(layer.data.szachpos[0],layer.data.szachpos[1]);
+					whatarewecallingnow();
+				}
+			} else {
+				$(this).setLayer(layer, {
+					width: pionek_width_light,  //następnie zmień temu pionkowi rozmiar na "wciśnięty"
+					height: pionek_height_light
 				})
-			}
-			$(this).setLayer(layer, {
-				width: pionek_width_light,  //następnie zmień temu pionkowi rozmiar na "wciśnięty"
-				height: pionek_height_light
-			})
-			.drawLayers();  //i przerysuj warstwy
-			pionekIsClicked = true; //ustaw że pionek jest kliknięty
-			pionekClickedName = layer.name; //zmienną z nazwą
-			pionekClickedChessPoz = layer.data.szachpos; //i pozycją
-			var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght; //ile destynacji
-			for (var iii=0;iii<naszlenvftpu;iii++) { //dla każdej z destynacji
-				var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
-				//zmień kolor pola na highlighted
-				changeColor(curpossss[0],curpossss[1]);
+				.drawLayers();  //i przerysuj warstwy
+				pionekIsClicked = true; //ustaw że pionek jest kliknięty
+				pionekClickedName = layer.name; //zmienną z nazwą
+				pionekClickedChessPoz = layer.data.szachpos; //i pozycją
+				var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght; //ile destynacji
+				for (var iii=0;iii<naszlenvftpu;iii++) { //dla każdej z destynacji
+					var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
+					//zmień kolor pola na highlighted
+					changeColor(curpossss[0],curpossss[1]);
+				}
 			}
 			draw(); //po czym przerysuj
 		}
