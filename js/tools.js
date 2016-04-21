@@ -40,5 +40,9 @@ var Tools = {
 
 	askPromotion: function (what, topos) {
 		return (what == Pawn && topos[0] == 0);
+	},
+
+	arePosEqual: function (one, two) {
+		return (one[0]===two[0] && one[1]===two[1]);
 	}
 };
