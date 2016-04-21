@@ -233,7 +233,7 @@ function drawField(a, b){  	//drawField(file, rank)
 						}
 					 );
 				animujPionek(pozycjasrodka([a,b]));
-				//gameformsubmit();
+				//gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
 			}
 		}
 	});
