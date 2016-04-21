@@ -33,6 +33,11 @@ div.afterlist {
 	margin-top: 5px;
 	font-size: 15px;
 }
+.aftbut {
+	width: 50%;
+	margin-top: 1px;
+	font-size: 10px;
+}
 .gameforms_hr {
 	border: 2px dashed #008000;
 	margin: 0 5px;
