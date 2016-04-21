@@ -365,27 +365,28 @@ function pionek(color, figtype, nazwa, poschess){
 		x: poz[0], y: poz[1],
 		width: pionek_width,
 		height: pionek_height,
-		click: function(layer){
-			if(pionekIsClicked){
+		click: function(layer){  //jeżeli pionek kliknięty
+			if(pionekIsClicked){ //jeżeli jest już jakiś kliknięty pionek
 				$(this).setLayer(pionekClickedName,{
-					width: pionek_width,
+					width: pionek_width, //przywróć tamtemu klikniętemu pionkowi standardowy rozmiar
 					height: pionek_height
 				})
 			}
 			$(this).setLayer(layer, {
-				width: pionek_width_light,
+				width: pionek_width_light,  //następnie zmień temu pionkowi rozmiar na "wciśnięty"
 				height: pionek_height_light
 			})
-			.drawLayers();
-			pionekIsClicked = true;
-			pionekClickedName = layer.name;
-			pionekClickedChessPoz = layer.data.szachpos;
-			var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght;
-			for (var iii=0;iii<naszlenvftpu;iii++) {
+			.drawLayers();  //i przerysuj warstwy
+			pionekIsClicked = true; //ustaw że pionek jest kliknięty
+			pionekClickedName = layer.name; //zmienną z nazwą
+			pionekClickedChessPoz = layer.data.szachpos; //i pozycją
+			var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght; //ile destynacji
+			for (var iii=0;iii<naszlenvftpu;iii++) { //dla każdej z destynacji
 				var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
+				//zmień kolor pola na highlighted
 				changeColor(curpossss[0],curpossss[1]);
 			}
-			draw();
+			draw(); //po czym przerysuj
 		}
 	});
 }
