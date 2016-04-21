@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	 font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
 canvas {
 	position: absolute;
@@ -22,7 +22,11 @@ div.gameforms {
 	background-color: #ccff99;
 }
 .gameform {
-	margin: 20px 30px;
+	margin: 11px 25px;
+}
+div.afterlist {
+	overflow: y-scroll;
+	height: 150px;
 }
 .gameforms_button {
 	width: 100%;
@@ -39,7 +43,7 @@ div.gameforms {
 	font-weight: bold;
 	display: block;
 }
- .gameforms_label {
+.gameforms_label {
 	margin-top: 3px;
 	color: green;
 	font-size: 13px;
