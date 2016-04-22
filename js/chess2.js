@@ -393,7 +393,7 @@ function pionek(color, figtype, nazwa, poschess){
 				pionekClickedName = layer.name; //zmienną z nazwą
 				pionekClickedChessPoz = layer.data.szachpos; //i pozycją
 				var naszlenvftpu = vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]].lenght; //ile destynacji
-				console.log(JSON.stringify(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]]));
+				console.log("jsondest",JSON.stringify(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]]));
 				for (var iii=0;iii<naszlenvftpu;iii++) { //dla każdej z destynacji
 					var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
 					//zmień kolor pola na highlighted
