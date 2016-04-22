@@ -11,6 +11,9 @@ var Tools = {
 	Gray: 2,
 	Black: 3,
 
+	figdict: ["ZeroFigType","Rook","Knight","Bishop","Queen","King","Pawn"],
+	coldict: ["White","Gray","Black"],
+
 	uint8ToFigure: function (uint8) {
 		return new Figure(uint8 & 7, (uint8 >> 3) & 7, (uint8 >> 6) > 0);
 	},
