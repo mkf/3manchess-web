@@ -27,6 +27,7 @@ div.gameforms {
 div.afterlist {
 	overflow-y: scroll;
 	height: 150px;
+	font-size: 11px;
 }
 .gameforms_button {
 	width: 100%;
