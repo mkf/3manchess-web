@@ -15,6 +15,15 @@
 		<script type="text/javascript" src="js/tools.js"></script>
 	</head>
 	<body>
+		<!-- Google Tag Manager -->
+		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5ZJ772"
+		    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-5ZJ772');</script>
+		<!-- End Google Tag Manager -->
 		<canvas id="board" width="850" height="850"></canvas>
 		<canvas id="pawns" width="850" height="850"></canvas>
 		<div>Kolumna: <div id="col" class="lab">X</div></div>
@@ -28,10 +37,10 @@
 				</div>
 			</form>
 			<div class="gameform">
-			<button id="getbefore" class="aftbut">Before</button><button id="getafter" class="aftbut">After</button>
-			<label for="intervalms" class="gameforms_label">After Polling interval [ms]</label>
-			<input id="intervalms" class="gameforms_input">
-			<button id="stapoll" class="aftbut">Start</button><button id="stopoll" class="aftbut" disabled>Stop</button>
+				<button id="getbefore" class="aftbut">Before</button><button id="getafter" class="aftbut">After</button>
+				<label for="intervalms" class="gameforms_label">After Polling interval [ms]</label>
+				<input id="intervalms" class="gameforms_input">
+				<button id="stapoll" class="aftbut">Start</button><button id="stopoll" class="aftbut" disabled>Stop</button>
 			</div>
 			<hr class="gameforms_hr">
 			<form id="loginform" class="gameform">
