@@ -203,13 +203,13 @@ var endturnfunction = function(a,b) {
 					parseInt($("#playerid").val()),  //jako gracz o playerid pobranym z disabled input
 					authkey, //klucz API
 					function(turdata) { //jak już będzie id ruchu i after
-						console.log(turdata);
+						console.log("successturn",turdata);
 						$("#gameid_input").val(turdata.after);  //wstawić to do input disabled
+						gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
 					}
 				 );
 			//animujPionek(pozycjasrodka([a,b])); //zbędna animacja, w sumie nie wiem czy tego nie wywalić bo mylące przesunięcie
 			//animację możnaby włączyć, jeśli byłby wzywany gameformsubmit()
-			//gameformsubmit(); //można to zastąpić po prostu podświetlonym pokazaniem na liście after, nie trzeba wtedy przerzucać gameformsubmit gdzieś wcześniej
 		}
 	};
 	return endturnfuncreturn;
