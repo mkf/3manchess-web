@@ -22,6 +22,10 @@ var loginu="";
 var passwordu="";
 var gamestate;
 
+function strbefaft(befaft) {
+	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\""+befaft.move.aftergp+"\"> ID"+befaft.id+" "+befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3]+"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid+" →"+befaft.move.aftergp+"<br>";
+};
+
 var ustawobecny = function() {
 	var pozycja = [0,0];
 	for (pozycja[0]=0;pozycja[0]<6;pozycja[0]++) {
@@ -83,28 +87,32 @@ $("#loginform").submit(function() {
 });
 
 var beaffunc = function(datt) {
-		var dattlen = datt.length;
-		var ourstrr = " ";
-		for (var ii=0;ii<dattlen;ii++) {
-			ourstrr+=strbefaft(datt[ii]);
-		}
-		document.getElementById("afterlist").innerHTML=ourstrr;
-	};
+	var dattlen = datt.length;
+	var ourstrr = " ";
+	for (var ii=0;ii<dattlen;ii++) {
+		ourstrr+=strbefaft(datt[ii]);
+	}
+	document.getElementById("afterlist").innerHTML=ourstrr;
+};
+
+var doradios = function() {
+	$("input[type=radio][name=switchba]").change(function() {
+		console.log("sba",this.value)
+			$("#gameid_input").val(this.value);
+		gameformsubmit();
+	});
+};
 
 $("#getbefore").click(function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.before(gameID, beaffunc);
+	doradios();
 });
 
 $("#getafter").click(function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.after(gameID,null,null,null,beaffunc);
-});
-
-$("input[type=radio][name=switchba]").change(function() {
-	console.log("sba",this.value)
-	$("#gameid_input").val(this.value);
-	gameformsubmit();
+	doradios();
 });
 
 $("#newgameform").submit(function() {
