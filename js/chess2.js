@@ -60,7 +60,7 @@ var ladujvftp = function () {
 };
 
 function strbefaft(befaft) {
-	return "<input type=\"radio\" name=\"switchba\" value=\""+befaft.move.aftergp+"\"> ID"+befaft.id+" "+befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3]+"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid+" →"+befaft.move.aftergp+"<br>";
+	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\""+befaft.move.aftergp+"\"> ID"+befaft.id+" "+befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3]+"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid+" →"+befaft.move.aftergp+"<br>";
 };
 
 var czypytacprom = function (ofromto) {
