@@ -28,11 +28,8 @@ $("#signingform").submit(function() {
 		$("#passwdu").val(passwdu);
 		console.log("signup",data);
 		authkey = data.authkey;
-		$("#userid").val(data.id);
-		klie.userInfo(parseInt($("#userid").val()),function(pdata) {
-			console.log(pdata);
-			$("#playerid").val(pdata.playerid);
-		});
+		$("#userid").val(data.userid);
+		$("#playerid").val(data.playerid);
 	});
 	return false;
 });
