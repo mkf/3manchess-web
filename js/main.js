@@ -101,7 +101,7 @@ $("#getafter").click(function() {
 	klie.after(gameID,null,null,null,beaffunc);
 });
 
-$(".switchba").change(function() {
+$("input[type=radio][name=switchba]").change(function() {
 	$("#gameid_input").val(this.value);
 	gameformsubmit();
 });
