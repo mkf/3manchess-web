@@ -26,7 +26,7 @@ function enablebotadd() {
 	$("#whoami").prop("disabled",false);
 	$("#ownname").prop("disabled",false);
 	$("#settings").prop("disabled",false);
-	$("#loginsubmit").prop("disabled",false);
+	$("#botsubmit").prop("disabled",false);
 }
 
 $("#signingform").submit(function() {
