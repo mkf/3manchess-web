@@ -48,7 +48,7 @@ var ladujvftp = function () {
 		for (naszapo[1]=0;naszapo[1]<24;naszapo[1]++) {
 			var vftpourlenftp = vftplist.fromtoproms.length;
 			for (var ii=0;ii<vftpourlenftp;ii++) {
-				if (vftplist.fromtoproms[ii].fromto[0]==naszapo) {
+				if (Tools.arePosEqual(vftplist.fromtoproms[ii].fromto[0],naszapo)) {
 					vftparr[naszapo[0]][naszapo[1]].push({
 						to: vftplist.fromtoproms[ii].fromto[1], 
 						prom: vftplist.fromtoproms[ii].pawnpromotion
@@ -61,7 +61,7 @@ var ladujvftp = function () {
 
 var czypytacprom = function (ofromto) {
 	var vfarrlent = vftparr[ofromto[0][0]][ofromto[0][1]].length;
-	console.log("czypytprom",vftparr[ofromto[0][0]][ofromto[0][1]]);
+	console.log("czypytprom",vfarrlent, vftparr[ofromto[0][0]][ofromto[0][1]],vftparr);
 	var vfarrpromlist = [];
 	for (var ii=0;ii<vfarrlent;ii++) {
 		var vftarrpromcur = vftparr[ofromto[0][0]][ofromto[0][1]][ii].prom;
