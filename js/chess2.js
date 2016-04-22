@@ -379,6 +379,7 @@ function pionek(color, figtype, nazwa, poschess){
 						height: pionek_height
 					});
 					pionekIsClicked=false;
+					standardColor();
 				} else {
 					var whatarewecallingnow = endturnfunction(layer.data.szachpos[0],layer.data.szachpos[1]);
 					whatarewecallingnow();
