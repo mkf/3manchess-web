@@ -129,16 +129,18 @@ $("#getafter").click(aftchefun);
 var thisispolling;
 
 $("#stapoll").click(function() {
+	console.log("stapoll");
 	$("#stapoll").prop("disabled",true);
 	$("#stopoll").prop("disabled",false);
 	thisispolling = setInterval(aftchefun,parseInt($("#intervalms").val()));
-};
+});
 
 $("#stopoll").click(function() {
+	console.log("stopoll");
 	clearInterval(thisispolling);
 	$("#stopoll").prop("disabled",true);
 	$("#stapoll").prop("disabled",false);
-};
+});
 
 $("#newgameform").submit(function() {
 	var whiteu=parseInt($("#whitenew").val());
