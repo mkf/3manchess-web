@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>3manchess-web</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/jcanvas.js"></script>
+		<script type="text/javascript" src="js/client.js"></script>
+	</head>
+	<body>
+		<div class="signupforms">
+			<form id="signingform" class="signupform">
+				<label for="signlogin" class="signforms_label">Login</label>
+				<input id="signlogin" class="signforms_input"><br>
+				<label for="signpasswd" class="signforms_label">Password</label>
+				<input id="signpasswd" type="password" class="signforms_input"><br>
+				<label for="signupname" class="signforms_label">Name</label>
+				<input id="signupname" class="signforms_input"><br>
+				<button type="submit" id="signupsubmit" class="signforms_button">Zarejestruj</button><br>
+			</form><hr class="signforms_hr">
+			<form id="loginform" class="signupform">
+				<label for="logininput" class="signforms_label">Login</label>
+				<input id="logininput" class="signforms_input"><br>
+				<label for="passwdinput" class="signforms_label">Password</label>
+				<input id="passwdinput" type="password" class="signforms_input"><br>
+				<button type="submit" id="loginsubmit" class="signforms_button">Zaloguj</button><br>
+			</form>
+			<hr class="signforms_hr">
+			<div class="signupform">
+				<label for="userid" class="signforms_label">UserID</label>
+				<input id="userid" disabled class="signforms_input"><br>
+				<label for="playerid" class="signforms_label">PlayerID</label>
+				<input id="playerid" disabled class="signforms_input"><br>
+			</div>
+			<hr class="signforms_hr">
+			<form id="addbotform" class="signupform">
+				<label for="whoami" class="signforms_label">Bot Type</label>
+				<select id="whoami" class="signforms_dropdown" disabled>
+					<option value="constsitval">constsitval</option>
+				</select><br>
+				<label for="ownname" class="signforms_label">Your own name</label>
+				<input id="ownname" class="signforms_input" disabled><br>
+				<label for="settings" class="signforms_label">Settings (JSON?)</label>
+				<input id=settings" class="signforms_input" disabled><br>
+				<button type="submit" id="loginsubmit" class="signforms_button" disabled>Stwórz bota</button><br>
+			</form>
+		</div>
+		<script type="text/javascript" src="js/signup.js"></script>
+	</body>
+</html>
