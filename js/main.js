@@ -102,6 +102,7 @@ $("#getafter").click(function() {
 });
 
 $("input[type=radio][name=switchba]").change(function() {
+	console.log("sba",this.value)
 	$("#gameid_input").val(this.value);
 	gameformsubmit();
 });
