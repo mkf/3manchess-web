@@ -43,7 +43,7 @@ var nowyoucan = true;
 /******************************/
 
 var ladujvftp = function () {
-	var vftparr = cleanarrboard();
+	vftparr = cleanarrboard();
 	var naszapo = [0,0];
 	for (naszapo[0]=0;naszapo[0]<6;naszapo[0]++) {
 		for (naszapo[1]=0;naszapo[1]<24;naszapo[1]++) {
