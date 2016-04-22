@@ -16,6 +16,7 @@ var JSONlikeNEWGAME = new State(
 			"fullmovenumber":1,
 			"alivecolors":[true,true,true]
 		});
+JSONlikeNEWGAME.prepareForSending();
 
 var loginu="";
 var passwordu="";
