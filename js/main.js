@@ -81,6 +81,30 @@ $("#loginform").submit(function() {
 	return false;
 });
 
+var beaffunc = function(datt) {
+		var dattlen = datt.length;
+		var ourstrr = " ";
+		for (var ii=0;ii<dattlen;ii++) {
+			ourstrr+=strbefaft(datt[ii]);
+		}
+		document.getElementById("afterlist").innerHTML=ourstrr;
+	};
+
+$("#getbefore").click(function() {
+	gameID=parseInt($("#gameid_input").val());
+	klie.before(gameID, beaffunc);
+});
+
+$("#getafter").click(function() {
+	gameID=parseInt($("#gameid_input").val());
+	klie.after(gameID,null,null,null,beaffunc);
+});
+
+$("input:switchba").change(function() {
+	$("#gameid_input").val($("input:switchba:checked").val());
+	gameformsubmit();
+});
+
 $("#newgameform").submit(function() {
 	var whiteu=parseInt($("#whitenew").val());
 	var grayu=parseInt($("#graynew").val());
