@@ -49,7 +49,7 @@ $("#addbotform").submit(function() {
 	var whoami = $("#whoami").val();
 	var ownname = $("#ownname").val();
 	var settings = $("#settings").val();
-	klie.newBot(whoami,ownname,{id:parseInt($("#userid").val()),authkey:authkey},settings,function(data) {
+	klie.newBot(whoami,parseInt($("#userid").val()),authkey,ownname,settings,function(data) {
 		console.log(data);
 		$("#botid").val(data.botid);
 		$("#botplayerid").val(data.playerid);
