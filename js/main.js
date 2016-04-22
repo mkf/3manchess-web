@@ -112,15 +112,33 @@ var doradios = function() {
 	});
 };
 
-$("#getbefore").click(function() {
+var befchefun = function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.before(gameID, beaffunc(false));
-});
+};
 
-$("#getafter").click(function() {
+$("#getbefore").click(befchefun);
+
+var aftchefun = function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.after(gameID,null,null,null,beaffunc(true));
-});
+};
+
+$("#getafter").click(aftchefun);
+
+var thisispolling;
+
+$("#stapoll").click(function() {
+	$("#stapoll").prop("disabled",true);
+	$("#stopoll").prop("disabled",false);
+	thisispolling = setInterval(aftchefun,parseInt($("#intervalms").val()));
+};
+
+$("#stopoll").click(function() {
+	clearInterval(thisispolling);
+	$("#stopoll").prop("disabled",true);
+	$("#stapoll").prop("disabled",false);
+};
 
 $("#newgameform").submit(function() {
 	var whiteu=parseInt($("#whitenew").val());
