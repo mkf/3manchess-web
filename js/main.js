@@ -100,8 +100,8 @@ $("#getafter").click(function() {
 	klie.after(gameID,null,null,null,beaffunc);
 });
 
-$("input:switchba").change(function() {
-	$("#gameid_input").val($("input:switchba:checked").val());
+$("input[type=radio][name=switchba]:checked").change(function() {
+	$("#gameid_input").val($(this).val());
 	gameformsubmit();
 });
 
