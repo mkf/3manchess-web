@@ -66,7 +66,7 @@ var czypytacprom = function (ofromto) {
 	for (var ii=0;ii<vfarrlent;ii++) {
 		var vftarrpromcur = vftparr[ofromto[0][0]][ofromto[0][1]][ii].prom;
 		if (vftarrpromcur>0) {
-			vfarrpromlist.push(vftarrpromcur);
+			vfarrpromlist.push(Tools.figdict[vftarrpromcur]+":"+vftarrpromcur);
 		}
 	}
 	return vfarrpromlist;
