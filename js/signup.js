@@ -53,7 +53,7 @@ $("#addbotform").submit(function() {
 		console.log(data);
 		$("#botid").val(data.botid);
 		$("#botplayerid").val(data.playerid);
-		$("#botauthkey").val(data.authkey);
+		$("#botauth").val(data.authkey);
 	});
 	return false;
 });
