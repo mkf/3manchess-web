@@ -61,6 +61,7 @@ var ladujvftp = function () {
 
 var czypytacprom = function (ofromto) {
 	var vfarrlent = vftparr[ofromto[0][0]][ofromto[0][1]].length;
+	console.log("czypytprom",vftparr[ofromto[0][0]][ofromto[0][1]]);
 	var vfarrpromlist = [];
 	for (var ii=0;ii<vfarrlent;ii++) {
 		var vftarrpromcur = vftparr[ofromto[0][0]][ofromto[0][1]][ii].prom;
