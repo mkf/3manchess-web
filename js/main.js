@@ -21,8 +21,14 @@ var loginu="";
 var passwordu="";
 var gamestate;
 
-function strbefaft(befaft) {
-	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\""+befaft.move.aftergp+"\"> ID"+befaft.id+" "+befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3]+"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid+" →"+befaft.move.aftergp+"<br>";
+function strbefaft(befaft,aftnotbef) {
+	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\"" + 
+		(aftnotbef?befaft.move.aftergp:befaft.move.beforegp) + 
+		"\"> ID"+befaft.id+" " + 
+		befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3] + 
+		"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid + 
+		(aftnotbef?" →"+befaft.move.aftergp:" "+befaft.move.beforegp+"← ") + 
+		 "<br>";
 };
 
 var ustawobecny = function() {
@@ -85,14 +91,17 @@ $("#loginform").submit(function() {
 	return false;
 });
 
-var beaffunc = function(datt) {
-	var dattlen = datt.length;
-	var ourstrr = " ";
-	for (var ii=0;ii<dattlen;ii++) {
-		ourstrr+=strbefaft(datt[ii]);
-	}
-	document.getElementById("afterlist").innerHTML=ourstrr;
-	doradios();
+var beaffunc = function(aftnotbef) {
+	var wearereturnin = function(datt) {
+		var dattlen = datt.length;
+		var ourstrr = " ";
+		for (var ii=0;ii<dattlen;ii++) {
+			ourstrr+=strbefaft(datt[ii],aftnotbef);
+		}
+		document.getElementById("afterlist").innerHTML=ourstrr;
+		doradios();
+	};
+	return wearereturnin;
 };
 
 var doradios = function() {
@@ -105,12 +114,12 @@ var doradios = function() {
 
 $("#getbefore").click(function() {
 	gameID=parseInt($("#gameid_input").val());
-	klie.before(gameID, beaffunc);
+	klie.before(gameID, beaffunc(false));
 });
 
 $("#getafter").click(function() {
 	gameID=parseInt($("#gameid_input").val());
-	klie.after(gameID,null,null,null,beaffunc);
+	klie.after(gameID,null,null,null,beaffunc(true));
 });
 
 $("#newgameform").submit(function() {
