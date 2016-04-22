@@ -397,6 +397,7 @@ function pionek(color, figtype, nazwa, poschess){
 				for (var iii=0;iii<naszlenvftpu;iii++) { //dla każdej z destynacji
 					var curpossss = dechess(vftparr[pionekClickedChessPoz[0]][pionekClickedChessPoz[1]][iii].to);
 					//zmień kolor pola na highlighted
+					console.log("destpos",JSON.stringify(curpossss));
 					changeColor(curpossss[0],curpossss[1]);
 				}
 			}
