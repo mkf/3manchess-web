@@ -92,6 +92,7 @@ var beaffunc = function(datt) {
 		ourstrr+=strbefaft(datt[ii]);
 	}
 	document.getElementById("afterlist").innerHTML=ourstrr;
+	doradios();
 };
 
 var doradios = function() {
@@ -105,13 +106,11 @@ var doradios = function() {
 $("#getbefore").click(function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.before(gameID, beaffunc);
-	doradios();
 });
 
 $("#getafter").click(function() {
 	gameID=parseInt($("#gameid_input").val());
 	klie.after(gameID,null,null,null,beaffunc);
-	doradios();
 });
 
 $("#newgameform").submit(function() {
