@@ -57,6 +57,3 @@ $("#addbotform").submit(function() {
 	});
 	return false;
 });
-	});
-	return false;
-});
