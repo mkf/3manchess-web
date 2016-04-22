@@ -7,7 +7,7 @@ var Client = function (baseUrl) {
 	this.baseURL = String(baseUrl);
 
 	this.addGame = function (state, white, gray, black, callback, callbackParameters) {
-		state.prepareForSending();
+		//state.prepareForSending();
 		ourqueryis = ({
 			url: this.baseURL + "api/addgame",
 			type: "POST",

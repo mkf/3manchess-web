@@ -1,4 +1,4 @@
-var JSONlikeNEWGAME = new State(
+var JSONlikeNEWGAME = //new State(
 		{
 			"board":[
 				[9, 10,11,12,13,11,10,9 ,17,18,19,20,21,19,18,17,25,26,27,28,29,27,26,25],
@@ -15,8 +15,8 @@ var JSONlikeNEWGAME = new State(
 			"halfmoveclock":0,
 			"fullmovenumber":1,
 			"alivecolors":[true,true,true]
-		});
-JSONlikeNEWGAME.prepareForSending();
+		};
+//JSONlikeNEWGAME.prepareForSending();
 
 var loginu="";
 var passwordu="";

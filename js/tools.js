@@ -27,17 +27,6 @@ var Tools = {
 		return source;
 	},
 
-	boardToUint8: function (sourceBoard) {
-		var source = sourceBoard;
-		for (var y = 1; y < 6; y++) {
-			for (var x = 1; x < 24; x++) {
-				var t = source[y][x];
-				source[y][x] = t.uint8();
-			}
-		}
-		return source;
-	},
-
 	askPromotion: function (what, topos) {
 		return (what == Pawn && topos[0] == 0);
 	},
@@ -46,3 +35,14 @@ var Tools = {
 		return (one[0]===two[0] && one[1]===two[1]);
 	}
 };
+
+function boardToUint8(sourceBoard) {
+	var source = sourceBoard;
+	for (var y = 1; y < 6; y++) {
+		for (var x = 1; x < 24; x++) {
+			var t = source[y][x];
+			source[y][x] = t.uint8();
+		}
+	}
+	return source;
+}

@@ -10,6 +10,6 @@ var State = function (obj) {
 
 	this.prepareForSending = function () {
 		var temp = this.board;
-		this.board = Tools.boardToUint8(temp);
+		this.board = boardToUint8(temp);
 	};
 };
