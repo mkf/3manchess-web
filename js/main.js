@@ -96,8 +96,8 @@ var beaffunc = function(datt) {
 
 var doradios = function() {
 	$("input[type=radio][name=switchba]").change(function() {
-		console.log("sba",this.value)
-			$("#gameid_input").val(this.value);
+		console.log("sba",this.value);
+		$("#gameid_input").val(this.value);
 		gameformsubmit();
 	});
 };
