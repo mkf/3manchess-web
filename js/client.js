@@ -72,7 +72,7 @@ var Client = function (baseUrl) {
 
 	this.before = function (gameid, callback, callbackParameters) {
 		ourqueryis = ({
-			url: this.baseURL + "api/play/" + gameid + "/after",
+			url: this.baseURL + "api/play/" + gameid + "/before",
 			type: "GET",
 			dataType: "json",
 			complete: function () {
