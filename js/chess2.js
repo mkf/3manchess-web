@@ -12,8 +12,8 @@ const color_field_1 = "#a65c13"; //kolor ciemnego pola
 const color_field_2 = "#f4d80b"; //kolor jasnego pola
 const color_moat = "#66ff33"; //kolor moat'a
 
-const color_field_1_light = "#003300"; //kolor podświetlonego ciemnego pola
-const color_field_2_light = "#009900"; //kolor podświetlonego jasnego pola
+const color_field_1_light = "#060"; //kolor podświetlonego ciemnego pola
+const color_field_2_light = "#0B0"; //kolor podświetlonego jasnego pola
 /******************************/
 
 var board_radius_rim; 	// promień bez brzegu
