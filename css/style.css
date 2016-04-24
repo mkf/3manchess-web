@@ -21,6 +21,27 @@ div.gameforms {
 	border-radius: 25px;
 	background-color: #ccff99;
 }
+div.state {
+	width: 100%;
+}
+table.alive, tr.alive {
+	height: 60px;
+	width: 180px;
+	border: 0px;
+}
+td.alive {
+	height: 60px;
+	width: 60px;
+}
+table.castling, tr.castling {
+	height: 30px;
+	width: 180px;
+	border: 0px;
+}
+td.castling, img.castling {
+	height: 30px;
+	width: 30px;
+}
 .gameform {
 	margin: 11px 25px;
 }
