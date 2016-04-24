@@ -73,6 +73,10 @@ var gameformsubmit = function() {
 	return false;
 };
 
+var castnames = [['cawk','cawq'],['cagk','cagq'],['cabk','cabq']];
+
+var castwhat = [Tools.King, Tools.Queen];
+
 var showalive = function() {
 	var ouralive = gamestate.alivecolors;
 	for (var i=0;i<3;i++) {
@@ -91,6 +95,17 @@ var showalive = function() {
 };
 
 var showcastling = function() {
+	var ourcastl = gamestate.castling;
+	for (var i=0;i<3;i++) {
+		for (var j=0;j<2;j++) {
+			var elestr = castnames[i][j];
+			if (ourcastl[i][j]) {
+				document.getElementById(elestr).src = pionekurl(i+1,castwhat[j]);
+			} else {
+				document.getElementById(elestr).src = "#";
+			}
+		}
+	}
 };
 
 $("#game_form").submit(gameformsubmit);
