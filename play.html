@@ -30,6 +30,25 @@ new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		<div>Pierścień: <div id="row" class="lab">X</div></div>
 		<div class="gameforms">
 			<form id="game_form" class="gameform">
+				<div class="state">
+					<table class="alive">
+						<tr class="alive">
+							<td class="alive"><img class="alive" id="white"></td>
+							<td class="alive"><img class="alive" id="gray"></td>
+							<td class="alive"><img class="alive" id="black"></td>
+						</tr>
+					</table>
+					<table class="castling">
+						<tr class="castling">
+							<td class="castling"><img class="alive" id="cawk"></td>
+							<td class="castling"><img class="alive" id="cawq"></td>
+							<td class="castling"><img class="alive" id="cagk"></td>
+							<td class="castling"><img class="alive" id="cagq"></td>
+							<td class="castling"><img class="alive" id="cabk"></td>
+							<td class="castling"><img class="alive" id="cabq"></td>
+						</tr>
+					</table>
+				</div>
 				<label for="gameid_input" class="gameforms_label">Gameplay ID</label>
 				<input id="gameid_input" class="gameforms_input">
 				<button type="submit" id="form_submit" class="gameforms_button">Wyślij</button><br>
