@@ -32,13 +32,21 @@ table.alive, tr.alive {
 td.alive {
 	height: 60px;
 	width: 60px;
+	overflow-x: hidden;
+}
+img.alive {
 }
 table.castling, tr.castling {
 	height: 30px;
 	width: 180px;
 	border: 0px;
 }
-td.castling, img.castling {
+td.castling {
+	height: 30px;
+	width: 30px;
+	overflow-x: hidden;
+}
+img.castling {
 	height: 30px;
 	width: 30px;
 }

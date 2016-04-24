@@ -66,17 +66,31 @@ var gameformsubmit = function() {
 			console.log(vftpdat);
 			vftplist = vftpdat;
 			ladujvftp();
+			showalive();
+			showcastling();
 		});
 	});
 	return false;
 };
 
-var showalive() {
-
+var showalive = function() {
+	var ouralive = gamestate.alivecolors;
+	for (var i=0;i<3;i++) {
+		var colstr = Tools.coldict[i+1].toLowerCase();
+		if (ouralive[i]) {
+			document.getElementById(colstr).src = pionekurl(i+1,Tools.Pawn);
+			if (gamestate.movesnext===i+1) {
+				document.getElementById(colstr).height = 60;
+			} else {
+				document.getElementById(colstr).height = 40;
+			}
+		} else {
+			document.getElementById(colstr).src = "#";
+		}
+	}
 };
 
-var showcastling() {
-
+var showcastling = function() {
 };
 
 $("#game_form").submit(gameformsubmit);

@@ -7,6 +7,7 @@ var Tools = {
 	King: 5,
 	Pawn: 6,
 
+	ZeroColor: 0,
 	White: 1,
 	Gray: 2,
 	Black: 3,
