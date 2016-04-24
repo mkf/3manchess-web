@@ -71,6 +71,14 @@ var gameformsubmit = function() {
 	return false;
 };
 
+var showalive() {
+
+};
+
+var showcastling() {
+
+};
+
 $("#game_form").submit(gameformsubmit);
 
 $("#loginform").submit(function() {
