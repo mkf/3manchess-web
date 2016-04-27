@@ -2,17 +2,20 @@ body {
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
 canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
 }
+
 .lab {
 	display: inline-block;
 	width: 25px;
 	text-align: center;
 	font-weight: bold;
 }
+
 div.gameforms {
 	position: absolute;
 	right: 50px;
@@ -21,63 +24,78 @@ div.gameforms {
 	border-radius: 25px;
 	background-color: #ccff99;
 }
+
 div.state {
 	width: 100%;
 }
-table.alive, tr.alive {
+
+table.alive,
+tr.alive {
 	height: 60px;
 	width: 180px;
 	border: 0px;
 }
+
 td.alive {
 	height: 60px;
 	width: 60px;
 	overflow-x: hidden;
 }
-img.alive {
-}
-table.castling, tr.castling {
+
+img.alive {}
+
+table.castling,
+tr.castling {
 	height: 30px;
 	width: 180px;
 	border: 0px;
 }
+
 td.castling {
 	height: 30px;
 	width: 30px;
 	overflow-x: hidden;
 }
+
 img.castling {
 	height: 30px;
 	width: 30px;
 }
+
 .gameform {
 	margin: 11px 25px;
 }
+
 div.afterlist {
 	overflow-y: scroll;
 	height: 150px;
 	font-size: 11px;
 }
+
 .gameforms_button {
 	width: 100%;
 	margin-top: 5px;
 	font-size: 15px;
 }
+
 .aftbut {
 	width: 50%;
 	margin-top: 1px;
 	font-size: 10px;
 }
+
 .gameforms_hr {
 	border: 2px dashed #008000;
 	margin: 0 5px;
 }
+
 .gameforms_input {
 	width: calc(100% - 5px);
 	font-size: 13px;
 	font-weight: bold;
 	display: block;
 }
+
 .gameforms_label {
 	margin-top: 3px;
 	color: green;
