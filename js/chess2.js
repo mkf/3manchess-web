@@ -16,13 +16,13 @@ const color_field_1_light = "#060"; //kolor podświetlonego ciemnego pola
 const color_field_2_light = "#0B0"; //kolor podświetlonego jasnego pola
 /******************************/
 
-var board_radius_rim; 	// promień bez brzegu
-var board_radius_ring; 	// szerokość jednego pierścienia
+var board_radius_rim;	// promień bez brzegu
+var board_radius_ring;	// szerokość jednego pierścienia
 
-var pawns; 		//nasz obiekt
-var pawns_radius; 	//promień szachownicy wraz z brzegiem
+var pawns;		//nasz obiekt
+var pawns_radius;	//promień szachownicy wraz z brzegiem
 
-var color_rotation = 1; 	//color który jest na dole zwrócony w stronę usera //demo: 1, will be NaN by def (there should be no default here)
+var color_rotation = 1;		//color który jest na dole zwrócony w stronę usera //demo: 1, will be NaN by def (there should be no default here)
 //	potrzebny jest przycisk który będzie zmieniał tą zmienną na wybrany kolor i triggerował przerysowanie planszy
 
 var pionekIsClicked = false; //czy pionek został klinięty
@@ -51,7 +51,7 @@ var ladujvftp = function () {
 			for (var ii=0;ii<vftpourlenftp;ii++) {
 				if (Tools.arePosEqual(vftplist.fromtoproms[ii].fromto[0],naszapo)) {
 					vftparr[naszapo[0]][naszapo[1]].push({
-						to: vftplist.fromtoproms[ii].fromto[1], 
+						to: vftplist.fromtoproms[ii].fromto[1],
 						prom: vftplist.fromtoproms[ii].pawnpromotion
 					});
 				}
@@ -123,36 +123,36 @@ Number.prototype.mod = function(n) {
 window.addEventListener("load", initPawns);
 
 function initPawns(){
-	pawns = document.getElementById('pawns'); 
+	pawns = document.getElementById('pawns');
 	if(pawns.width < pawns.height){
-		pawns_radius = pawns.width/2; 
+		pawns_radius = pawns.width/2;
 	} else {
 		pawns_radius = pawns.height/2;
 	}
 	board_radius_rim = pawns_radius-pawns_radius/20; //promień bez brzegu to promień obiektu bez 1/20 czyli szer brzegu
 	board_radius_ring = board_radius_rim/8;    //szerokość jednego pierścienia to promień_bez_brzegu / (2dziury+6ranks)
 	$('#pawns').translateCanvas({
-		translateX: pawns_radius, translateY: pawns_radius}) 	//translacja żeby środek był (0,0)
-		.drawArc({ 			//rysuj brzeg
-			fillStyle: color_rim, 		//brzeg o kolorze brzegu
-			layer: true, 			//jest... warstwą?
-			name: 'rim', 			//nazwiemy go 'rim'
-			x: 0, y: 0, 			//środek łuku w (0,0) po translacji czyli naszym środku
-			radius: pawns_radius, 		//o promieniu całego naszego obiektu
-			start: 0, stop: 360 		//od 0 do 360 (czyli koło)
+		translateX: pawns_radius, translateY: pawns_radius})	//translacja żeby środek był (0,0)
+		.drawArc({			//rysuj brzeg
+			fillStyle: color_rim,		//brzeg o kolorze brzegu
+			layer: true,			//jest... warstwą?
+			name: 'rim',			//nazwiemy go 'rim'
+			x: 0, y: 0,			//środek łuku w (0,0) po translacji czyli naszym środku
+			radius: pawns_radius,		//o promieniu całego naszego obiektu
+			start: 0, stop: 360		//od 0 do 360 (czyli koło)
 		});
 	pawns.addEventListener ("mousemove", function (event) { //eventlistener na ruch myszy
 		var x = event.clientX-pawns_radius;
-		var y = event.clientY-pawns_radius; 	//współrzędne gdzie jest mysz z translacją żeby środek był 0,0
-		var strad = pospolar(x,y); 		//strad to współrzędne biegunowe położenia myszy
+		var y = event.clientY-pawns_radius;	//współrzędne gdzie jest mysz z translacją żeby środek był 0,0
+		var strad = pospolar(x,y);		//strad to współrzędne biegunowe położenia myszy
 		console.log(strad);
 		console.log(poscartes(strad.phi,strad.r));
-		var boardstrad=phiboard(strad.phi); 		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
+		var boardstrad=phiboard(strad.phi);		//boardstrad to kąt phi szachownicowy od osi zerowego file'a
 		console.log(boardstrad);
-		var boardpos = boardrankfile(boardstrad,strad.r); 	//pozycja szachownicowa położenia myszy
+		var boardpos = boardrankfile(boardstrad,strad.r);	//pozycja szachownicowa położenia myszy
 		console.log(boardpos);
-		if(boardpos[0] < 0 || boardpos[0] > 5){ 	//jeśli !boardpos.Correct
-			boardpos = [false,false];  			//podmień współrzędne na Boolean(false)
+		if(boardpos[0] < 0 || boardpos[0] > 5){		//jeśli !boardpos.Correct
+			boardpos = [false,false];			//podmień współrzędne na Boolean(false)
 		}
 
 		console.log("x: "+x+" y: "+y+" kąt: "+Math.floor(boardstrad*180/Math.PI)+" st. kol: "+boardpos);
@@ -170,14 +170,14 @@ function initPawns(){
 
 
 
-function drawFields(){ 	//funkcja dla każdego pola wzywająca drawField
+function drawFields(){	//funkcja dla każdego pola wzywająca drawField
 	var i, j;
 	for(i = 0; i < 6; i++){
 		for(j = 0; j < 24; j++){
-			drawField(i, j); 
+			drawField(i, j);
 		}
 	}
-	standardColor();  //kolorowanie na standardowe, ciemny i jasny, kolory szachownicy 
+	standardColor();  //kolorowanie na standardowe, ciemny i jasny, kolory szachownicy
 }
 
 var endturnfunction = function(a,b) {
@@ -217,12 +217,12 @@ var endturnfunction = function(a,b) {
 	return endturnfuncreturn;
 }
 
-function drawField(a, b){  	//drawField(file, rank)
+function drawField(a, b){	//drawField(file, rank)
 	var ang_start = 8*15+15*b; // zaczynamy od 120°, potem jedziemy co 15° (jeden file)
 	var ang_stop = ang_start+15; // rysujemy jeden file-łuk, czyli 15°
 	var r_1 = (7-a)*board_radius_ring;  //rysujemy rank-promień, konwersja pozycji boardowej
 	var r_2 = r_1+board_radius_ring; //po drugiej stronie ranka
-	var w = b;  	//obsolete?
+	var w = b;	//obsolete?
 	if(a%2 == 1){	//obsolete?
 		w++;	//obsolete?
 	}
@@ -346,7 +346,7 @@ function pozycjasrodka(rankfile) {
 	var a = pozycjasrodekpolarny(rankfile);
 	return poscartes(phicanvas(a.phi),a.r);
 }
-function przykladowePodswietlenie(){ 	//test podświetlenia pól
+function przykladowePodswietlenie(){	//test podświetlenia pól
 	changeColor(1, 1);
 	changeColor(2,2);
 	changeColor(3,3);
@@ -360,11 +360,11 @@ function przykladowePodswietlenie(){ 	//test podświetlenia pól
 /*** PIONKI ***/
 
 //pionek: nowy pionek, konstruowany z kolory, typu, nazwy obiektu (initpos?) i współrzędnych canvasa
-function pionek(color, figtype, nazwa, poschess){ 	
+function pionek(color, figtype, nazwa, poschess){
 	var poz = pozycjasrodka(dechess(poschess));
 	$('#pawns').drawImage({
 		layer: true,
-		name: nazwa, 
+		name: nazwa,
 		data: {
 			szachpos: [poschess[0],poschess[1]]
 		},
