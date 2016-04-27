@@ -22,13 +22,13 @@ var passwordu="";
 var gamestate;
 
 function strbefaft(befaft,aftnotbef) {
-	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\"" + 
-		(aftnotbef?befaft.move.aftergp:befaft.move.beforegp) + 
-		"\"> ID"+befaft.id+" " + 
-		befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3] + 
-		"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid + 
-		(aftnotbef?" →"+befaft.move.aftergp:" "+befaft.move.beforegp+"← ") + 
-		 "<br>";
+	return "<input type=\"radio\" name=\"switchba\" class=\"switchba\" value=\"" +
+		(aftnotbef?befaft.move.aftergp:befaft.move.beforegp) +
+		"\"> ID"+befaft.id+" " +
+		befaft.move.fromto[0]+","+befaft.move.fromto[1]+"→"+befaft.move.fromto[2]+","+befaft.move.fromto[3] +
+		"("+befaft.move.pawnpromotion+") playerid"+befaft.move.playerid +
+		(aftnotbef?" →"+befaft.move.aftergp:" "+befaft.move.beforegp+"← ") +
+		"<br>";
 };
 
 var ustawobecny = function() {
