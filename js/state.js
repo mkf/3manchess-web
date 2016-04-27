@@ -1,4 +1,4 @@
-var State = function (obj) {
+var State = function(obj) {
 	this.board = Tools.boardFromUint8(obj.board);
 	this.moatsstate = obj.moatsstate;
 	this.movesnext = obj.movesnext;
@@ -8,7 +8,7 @@ var State = function (obj) {
 	this.fullmovenumber = obj.fullmovenumber;
 	this.alivecolors = obj.alivecolors;
 
-	this.prepareForSending = function () {
+	this.prepareForSending = function() {
 		var temp = this.board;
 		this.board = boardToUint8(temp);
 	};
