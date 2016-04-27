@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>3manchess-web</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/jcanvas.js"></script>
-		<script type="text/javascript" src="js/chess2.js"></script>
-		<script type="text/javascript" src="js/tools.js"></script>
-		<script type="text/javascript" src="js/client.js"></script>
-		<script type="text/javascript" src="js/figure.js"></script>
-		<script type="text/javascript" src="js/gameplay.js"></script>
-		<script type="text/javascript" src="js/state.js"></script>
-		<script type="text/javascript" src="js/tools.js"></script>
-	</head>
-	<body>
-		<!-- Google Tag Manager -->
-		<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-5ZJ772"
+
+<head>
+	<title>3manchess-web</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/jcanvas.js"></script>
+	<script type="text/javascript" src="js/chess2.js"></script>
+	<script type="text/javascript" src="js/tools.js"></script>
+	<script type="text/javascript" src="js/client.js"></script>
+	<script type="text/javascript" src="js/figure.js"></script>
+	<script type="text/javascript" src="js/gameplay.js"></script>
+	<script type="text/javascript" src="js/state.js"></script>
+	<script type="text/javascript" src="js/tools.js"></script>
+</head>
+
+<body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-5ZJ772"
 		    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'http://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-5ZJ772');</script>
-		<!-- End Google Tag Manager -->
-		<canvas id="board" width="850" height="850"></canvas>
-		<canvas id="pawns" width="850" height="850"></canvas>
-		<div>Kolumna: <div id="col" class="lab">X</div></div>
-		<div>Pierścień: <div id="row" class="lab">X</div></div>
-		<div class="gameforms">
-			<form id="game_form" class="gameform">
-				<div class="state">
-					<table class="alive">
-						<tr class="alive">
-							<td class="alive"><img class="alive" id="white"></td>
-							<td class="alive"><img class="alive" id="gray"></td>
-							<td class="alive"><img class="alive" id="black"></td>
-						</tr>
-					</table>
-					<table class="castling">
-						<tr class="castling">
-							<td class="castling"><img class="alive" id="cawk" width="30"></td>
-							<td class="castling"><img class="alive" id="cawq" width="30"></td>
-							<td class="castling"><img class="alive" id="cagk" width="30"></td>
-							<td class="castling"><img class="alive" id="cagq" width="30"></td>
-							<td class="castling"><img class="alive" id="cabk" width="30"></td>
-							<td class="castling"><img class="alive" id="cabq" width="30"></td>
-						</tr>
-					</table>
-				</div>
-				<label for="gameid_input" class="gameforms_label">Gameplay ID</label>
-				<input id="gameid_input" class="gameforms_input">
-				<button type="submit" id="form_submit" class="gameforms_button">Wyślij</button><br>
-				<div class="afterlist" id="afterlist">
-				</div>
-			</form>
-			<div class="gameform">
-				<button id="getbefore" class="aftbut">Before</button><button id="getafter" class="aftbut">After</button>
-				<label for="intervalms" class="gameforms_label">After Polling interval [ms]</label>
-				<input id="intervalms" class="gameforms_input">
-				<button id="stapoll" class="aftbut">Start</button><button id="stopoll" class="aftbut" disabled>Stop</button>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'http://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-5ZJ772');
+	</script>
+	<!-- End Google Tag Manager -->
+	<canvas id="board" width="850" height="850"></canvas>
+	<canvas id="pawns" width="850" height="850"></canvas>
+	<div>Kolumna:
+		<div id="col" class="lab">X</div>
+	</div>
+	<div>Pierścień:
+		<div id="row" class="lab">X</div>
+	</div>
+	<div class="gameforms">
+		<form id="game_form" class="gameform">
+			<div class="state">
+				<table class="alive">
+					<tr class="alive">
+						<td class="alive"><img class="alive" id="white"></td>
+						<td class="alive"><img class="alive" id="gray"></td>
+						<td class="alive"><img class="alive" id="black"></td>
+					</tr>
+				</table>
+				<table class="castling">
+					<tr class="castling">
+						<td class="castling"><img class="alive" id="cawk" width="30"></td>
+						<td class="castling"><img class="alive" id="cawq" width="30"></td>
+						<td class="castling"><img class="alive" id="cagk" width="30"></td>
+						<td class="castling"><img class="alive" id="cagq" width="30"></td>
+						<td class="castling"><img class="alive" id="cabk" width="30"></td>
+						<td class="castling"><img class="alive" id="cabq" width="30"></td>
+					</tr>
+				</table>
 			</div>
-			<hr class="gameforms_hr">
-			<form id="loginform" class="gameform">
-				<label for="logininput" class="gameforms_label">Login</label>
-				<input id="logininput" class="gameforms_input">
-				<label for="passwdinput" class="gameforms_label">Password</label>
-				<input id="passwdinput" type="password" class="gameforms_input">
-				<button type="submit" id="loginsubmit" class="gameforms_button">Zaloguj</button><br>
-			</form>
-			<hr class="gameforms_hr">
-			<div class="gameform">
-				<label for="userid" class="gameforms_label">UserID</label>
-				<input id="userid" disabled class="gameforms_input">
-				<label for="playerid" class="gameforms_label">PlayerID</label>
-				<input id="playerid" disabled class="gameforms_input">
+			<label for="gameid_input" class="gameforms_label">Gameplay ID</label>
+			<input id="gameid_input" class="gameforms_input">
+			<button type="submit" id="form_submit" class="gameforms_button">Wyślij</button><br>
+			<div class="afterlist" id="afterlist">
 			</div>
-			<hr class="gameforms_hr">
-			<form id="newgameform" class="gameform">
-				<label for="whitenew" class="gameforms_label">White PlayerID</label>
-				<input id="whitenew" class="gameforms_input">
-				<label for="graynew" class="gameforms_label">Gray PlayerID</label>
-				<input id="graynew" class="gameforms_input">
-				<label for="blacknew" class="gameforms_label">Black PlayerID</label>
-				<input id="blacknew" class="gameforms_input">
-				<button type="submit" id="newgamesubmit" class="gameforms_button">Nowa gra</button><br>
-			</form>
+		</form>
+		<div class="gameform">
+			<button id="getbefore" class="aftbut">Before</button><button id="getafter" class="aftbut">After</button>
+			<label for="intervalms" class="gameforms_label">After Polling interval [ms]</label>
+			<input id="intervalms" class="gameforms_input">
+			<button id="stapoll" class="aftbut">Start</button><button id="stopoll" class="aftbut" disabled>Stop</button>
 		</div>
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
+		<hr class="gameforms_hr">
+		<form id="loginform" class="gameform">
+			<label for="logininput" class="gameforms_label">Login</label>
+			<input id="logininput" class="gameforms_input">
+			<label for="passwdinput" class="gameforms_label">Password</label>
+			<input id="passwdinput" type="password" class="gameforms_input">
+			<button type="submit" id="loginsubmit" class="gameforms_button">Zaloguj</button><br>
+		</form>
+		<hr class="gameforms_hr">
+		<div class="gameform">
+			<label for="userid" class="gameforms_label">UserID</label>
+			<input id="userid" disabled class="gameforms_input">
+			<label for="playerid" class="gameforms_label">PlayerID</label>
+			<input id="playerid" disabled class="gameforms_input">
+		</div>
+		<hr class="gameforms_hr">
+		<form id="newgameform" class="gameform">
+			<label for="whitenew" class="gameforms_label">White PlayerID</label>
+			<input id="whitenew" class="gameforms_input">
+			<label for="graynew" class="gameforms_label">Gray PlayerID</label>
+			<input id="graynew" class="gameforms_input">
+			<label for="blacknew" class="gameforms_label">Black PlayerID</label>
+			<input id="blacknew" class="gameforms_input">
+			<button type="submit" id="newgamesubmit" class="gameforms_button">Nowa gra</button><br>
+		</form>
+	</div>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+
 </html>

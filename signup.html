@@ -1,70 +1,85 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>3manchess-web</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/jcanvas.js"></script>
-		<script type="text/javascript" src="js/client.js"></script>
-	</head>
-	<body>
-		<!-- Google Tag Manager -->
-		<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5ZJ772"
+
+<head>
+	<title>3manchess-web</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/jcanvas.js"></script>
+	<script type="text/javascript" src="js/client.js"></script>
+</head>
+
+<body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5ZJ772"
 		    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-5ZJ772');</script>
-		<!-- End Google Tag Manager -->
-		<div class="signupforms">
-			<form id="signingform" class="signupform">
-				<label for="signlogin" class="signforms_label">Login</label>
-				<input id="signlogin" class="signforms_input"><br>
-				<label for="signpasswd" class="signforms_label">Password</label>
-				<input id="signpasswd" type="password" class="signforms_input"><br>
-				<label for="signupname" class="signforms_label">Name</label>
-				<input id="signupname" class="signforms_input"><br>
-				<button type="submit" id="signupsubmit" class="signforms_button">Zarejestruj</button><br>
-			</form><hr class="signforms_hr">
-			<form id="loginform" class="signupform">
-				<label for="logininput" class="signforms_label">Login</label>
-				<input id="logininput" class="signforms_input"><br>
-				<label for="passwdinput" class="signforms_label">Password</label>
-				<input id="passwdinput" type="password" class="signforms_input"><br>
-				<button type="submit" id="loginsubmit" class="signforms_button">Zaloguj</button><br>
-			</form>
-			<hr class="signforms_hr">
-			<div class="signupform">
-				<label for="userid" class="signforms_label">UserID</label>
-				<input id="userid" disabled class="signforms_input"><br>
-				<label for="playerid" class="signforms_label">PlayerID</label>
-				<input id="playerid" disabled class="signforms_input"><br>
-				<label for="authkey" disabled class="signforms_label">Auth key</label>
-				<input id="authkey" disabled class="signforms_input"><br>
-			</div>
-			<hr class="signforms_hr">
-			<form id="addbotform" class="signupform">
-				<label for="whoami" class="signforms_label">Bot Type</label>
-				<select id="whoami" class="signforms_dropdown" disabled>
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+				'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-5ZJ772');
+	</script>
+	<!-- End Google Tag Manager -->
+	<div class="signupforms">
+		<form id="signingform" class="signupform">
+			<label for="signlogin" class="signforms_label">Login</label>
+			<input id="signlogin" class="signforms_input"><br>
+			<label for="signpasswd" class="signforms_label">Password</label>
+			<input id="signpasswd" type="password" class="signforms_input"><br>
+			<label for="signupname" class="signforms_label">Name</label>
+			<input id="signupname" class="signforms_input"><br>
+			<button type="submit" id="signupsubmit" class="signforms_button">Zarejestruj</button><br>
+		</form>
+		<hr class="signforms_hr">
+		<form id="loginform" class="signupform">
+			<label for="logininput" class="signforms_label">Login</label>
+			<input id="logininput" class="signforms_input"><br>
+			<label for="passwdinput" class="signforms_label">Password</label>
+			<input id="passwdinput" type="password" class="signforms_input"><br>
+			<button type="submit" id="loginsubmit" class="signforms_button">Zaloguj</button><br>
+		</form>
+		<hr class="signforms_hr">
+		<div class="signupform">
+			<label for="userid" class="signforms_label">UserID</label>
+			<input id="userid" disabled class="signforms_input"><br>
+			<label for="playerid" class="signforms_label">PlayerID</label>
+			<input id="playerid" disabled class="signforms_input"><br>
+			<label for="authkey" disabled class="signforms_label">Auth key</label>
+			<input id="authkey" disabled class="signforms_input"><br>
+		</div>
+		<hr class="signforms_hr">
+		<form id="addbotform" class="signupform">
+			<label for="whoami" class="signforms_label">Bot Type</label>
+			<select id="whoami" class="signforms_dropdown" disabled>
 					<option value="constsitval">constsitval</option>
 				</select><br>
-				<label for="ownname" class="signforms_label">Your own name</label>
-				<input id="ownname" class="signforms_input" disabled><br>
-				<label for="settings" class="signforms_label">Settings (JSON?)</label>
-				<input id="settings" class="signforms_input" disabled><br>
-				<button type="submit" id="botsubmit" class="signforms_button" disabled>Stwórz bota</button><br>
-			</form>
-			<div class="signupform">
-				<label for="botid" class="signforms_label">Bot ID</label>
-				<input id="botid" class="signforms_input" disabled><br>
-				<label for="botplayerid" class="signforms_label">Bot PlayerID</label>
-				<input id="botplayerid" class="signforms_input" disabled><br>
-				<label for="botauth" class="signforms_label">Bot Auth key</label>
-				<input id="botauth" class="signforms_input" disabled><br>
-			</div>
+			<label for="ownname" class="signforms_label">Your own name</label>
+			<input id="ownname" class="signforms_input" disabled><br>
+			<label for="settings" class="signforms_label">Settings (JSON?)</label>
+			<input id="settings" class="signforms_input" disabled><br>
+			<button type="submit" id="botsubmit" class="signforms_button" disabled>Stwórz bota</button><br>
+		</form>
+		<div class="signupform">
+			<label for="botid" class="signforms_label">Bot ID</label>
+			<input id="botid" class="signforms_input" disabled><br>
+			<label for="botplayerid" class="signforms_label">Bot PlayerID</label>
+			<input id="botplayerid" class="signforms_input" disabled><br>
+			<label for="botauth" class="signforms_label">Bot Auth key</label>
+			<input id="botauth" class="signforms_input" disabled><br>
 		</div>
-		<script type="text/javascript" src="js/signup.js"></script>
-	</body>
+	</div>
+	<script type="text/javascript" src="js/signup.js"></script>
+</body>
+
 </html>
