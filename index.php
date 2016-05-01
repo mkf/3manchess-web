@@ -35,18 +35,15 @@
 	<a href="https://github.com/ArchieT/3manchess">Backend on GitHub</a><br>
 	<a href="https://github.com/ArchieT/3manchess-web">This website on GitHub</a><br>
 	<hr>
-	<h2>How do I play?</h2>
-	<ul>
-		<li><a href="signup.html">Sign Up</a> with your login, password and name</li>
-		<li>In the <a href="play.html">game interface</a>, enter your login and password</li>
-		<li>Either create a new game (optionally preenter PlayerIDs of yours and your opponents) or enter a GameplayID and click <kbd>Submit</kbd></li>
-		<li>To switch to gameplays derived from the current one, click <kbd>After</kbd> and then select one from the list. You can also set up polling, which basically <i>clicks</i> <kbd>After</kbd> every <i>n</i> milliseconds.</li>
-		<li>To switch to a gameplay from which the current one is derived, click <kbd>Before</kbd> and then select it from the list. <i>If polling is on, <kbd>Before</kbd> might be overridden by <kbd>After</kbd> shortly afterwards</i></li>
-		<li>To play, simply click on the figure you want to move, and possible destinations will highlight in green.</li>
-	</ul>
+	<?php
+include_once 'dep/markdown.php';
+$ourtext = file_get_contents('about.md');
+$ourconten = Markdown($ourtext);
+echo $ourconten;
+?>
 
 	<hr>
-	<a href="about.html">About us</a>
+	<a href="about.php">About us</a>
 
 	<hr>
 
