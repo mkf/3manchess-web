@@ -37,7 +37,7 @@
 	<hr>
 	<?php
 include_once 'dep/markdown.php';
-$ourtext = file_get_contents('about.md');
+$ourtext = file_get_contents('index.md');
 $ourconten = Markdown($ourtext);
 echo $ourconten;
 ?>
